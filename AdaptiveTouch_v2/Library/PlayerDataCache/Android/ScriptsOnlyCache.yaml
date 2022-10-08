@@ -63,46 +63,50 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11958}
+      Script: {instanceID: 11882}
     - Class: 114
-      Script: {instanceID: 12224}
+      Script: {instanceID: 12148}
     - Class: 114
-      Script: {instanceID: 12380}
+      Script: {instanceID: 12304}
     - Class: 114
-      Script: {instanceID: 12434}
+      Script: {instanceID: 12358}
     - Class: 114
-      Script: {instanceID: 12786}
+      Script: {instanceID: 12712}
     - Class: 114
-      Script: {instanceID: 12820}
+      Script: {instanceID: 12746}
     - Class: 114
-      Script: {instanceID: 13402}
+      Script: {instanceID: 13328}
     - Class: 114
-      Script: {instanceID: 13694}
+      Script: {instanceID: 13620}
     - Class: 114
-      Script: {instanceID: 13712}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 13982}
+      Script: {instanceID: 13910}
     - Class: 114
-      Script: {instanceID: 13988}
+      Script: {instanceID: 13916}
+    - Class: 114
+      Script: {instanceID: 14002}
     - Class: 114
       Script: {instanceID: 14074}
     - Class: 114
-      Script: {instanceID: 14146}
+      Script: {instanceID: 14240}
     - Class: 114
-      Script: {instanceID: 14312}
+      Script: {instanceID: 14366}
     - Class: 114
-      Script: {instanceID: 14438}
+      Script: {instanceID: 14406}
     - Class: 114
-      Script: {instanceID: 14478}
+      Script: {instanceID: 14498}
     - Class: 114
-      Script: {instanceID: 14570}
-    - Class: 114
-      Script: {instanceID: 14610}
+      Script: {instanceID: 14538}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -652,7 +656,7 @@ ScriptsOnlyBuild:
     className: TextMeshSpawner
   - hash:
       serializedVersion: 2
-      Hash: cd6e7cca53d3c36c752194891c0faa55
+      Hash: f488916bea6fe898d501bcb65a23e7ac
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tap_Tor
@@ -839,4 +843,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Demo/Demo.unity
-  playerPath: C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/Atts_v03.apk
+  playerPath: C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/Atts_v04.apk
