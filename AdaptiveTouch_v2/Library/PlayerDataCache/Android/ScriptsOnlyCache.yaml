@@ -8,8 +8,6 @@ ScriptsOnlyBuild:
     - Tap_Tor
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -843,4 +841,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Demo/Demo.unity
-  playerPath: C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/Atts_v04.apk
+  playerPath: C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/Atts_v05.apk
