@@ -16,6 +16,8 @@ public class Tap_Tor : MonoBehaviour
     public Slider waveSlider;
     public AudioSource audio_vib_1; 
 
+    public bool AddDebugSound;
+
     private Vector3 worldPosition;
     private Plane plane = new Plane(Vector3.forward, 0);
 
@@ -49,7 +51,7 @@ public class Tap_Tor : MonoBehaviour
             }
             //Debug.Log("x: " + worldPosition.x.ToString("F1") + " y: " + worldPosition.y.ToString("F1") + " z: " + worldPosition.z.ToString("F1"));
 
-            if (worldPosition.y > 0.6f)
+            if (worldPosition.x < 0.0f)
             {
                 highlighter.transform.position = worldPosition;
 
@@ -76,7 +78,10 @@ public class Tap_Tor : MonoBehaviour
                 }
 
                 syntacts.session.Play(collisionChannel, collision);
-                audio_vib_1.Play(); 
+                if(AddDebugSound)
+                {
+                    audio_vib_1.Play();
+                } 
             }
 
 
