@@ -14,7 +14,14 @@ public class Tap_Tor : MonoBehaviour
     public Slider amplitudeSlider;
     public Slider durationSlider;
     public Slider waveSlider;
-    public AudioSource audio_vib_1; 
+    public AudioSource audio_vib_1;
+
+    //public Button SA_Button;
+    //public Button RA_Button;
+    //public Button Pac_Button;
+
+    //public Button Save_Button;
+    //public Button Load_Button;
 
     public bool AddDebugSound;
 
@@ -58,13 +65,13 @@ public class Tap_Tor : MonoBehaviour
                 int wave_index = Mathf.RoundToInt(waveSlider.value);
 
                 Signal collision = new Sine(50);
-                float signalDuration = durationSlider.value; 
+                float signalDuration = durationSlider.value;
 
                 if (wave_index == 0)
                 {
                     collision = new Sine(frequencySlider.value) * new ASR(0.05, signalDuration, 0.05) * amplitudeSlider.value;
                 }
-                else if(wave_index == 1)
+                else if (wave_index == 1)
                 {
                     collision = new Square(frequencySlider.value) * new ASR(0.05, signalDuration, 0.05) * amplitudeSlider.value;
                 }
@@ -78,14 +85,31 @@ public class Tap_Tor : MonoBehaviour
                 }
 
                 syntacts.session.Play(collisionChannel, collision);
-                if(AddDebugSound)
+                if (AddDebugSound)
                 {
                     audio_vib_1.Play();
-                } 
+                }
             }
 
 
 
         }
     }
+
+    public void ReceptorParams(int recept)
+    {
+        if(recept == 0)
+        {
+            frequencySlider.value = 10; // SA-1
+        }
+        if (recept == 1)
+        {
+            frequencySlider.value = 80; // RA=1
+        }
+        if (recept == 2)
+        {
+            frequencySlider.value = 300; // RA=2
+        }
+    }
+
 }
