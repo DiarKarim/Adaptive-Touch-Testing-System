@@ -16,6 +16,11 @@ public class Tap_Tor : MonoBehaviour
     public Slider waveSlider;
     public AudioSource audio_vib_1;
 
+    public int sa1_freq = 30;
+    public int ra1_freq = 80;
+    public int ra2_freq = 300;
+    public int res_freq = 174;
+
     //public Button SA_Button;
     //public Button RA_Button;
     //public Button Pac_Button;
@@ -100,15 +105,19 @@ public class Tap_Tor : MonoBehaviour
     {
         if(recept == 0)
         {
-            frequencySlider.value = 10; // SA-1
+            frequencySlider.value = sa1_freq; // SA-1
         }
         if (recept == 1)
         {
-            frequencySlider.value = 80; // RA=1
+            frequencySlider.value = ra1_freq; // RA=1
         }
         if (recept == 2)
         {
-            frequencySlider.value = 300; // RA=2
+            frequencySlider.value = ra2_freq; // RA=2
+        }
+        if (recept == 3)
+        {
+            frequencySlider.value = res_freq; // Resonant frequency = 3
         }
     }
 
