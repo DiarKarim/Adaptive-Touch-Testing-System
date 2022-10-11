@@ -186,7 +186,7 @@ public class AdaptiveStaircase : MonoBehaviour
 
     //public GameObject[] stimuli;
     public Stair stair_1N = new Stair();
-    //public Stair stair_5N = new Stair();
+    public Stair stair_5N = new Stair();
 
     public float stepSize;
     public float minStepSize = 0.005f;
@@ -536,8 +536,8 @@ public class AdaptiveStaircase : MonoBehaviour
         string seq3 = "0.0, 0.0, " + stair_1N.stepValue.ToString();
         stimSeqOrder = new string[3] { seq1, seq2, seq3 };
 
-        UDP_Messenger.msg = trialNum.ToString() + ", " + ptxID.ToString() + ", " + stimSeqOrder[StimSequence[trialNum]].ToString() + ", " + TargetForce.ToString() + " \n";
-        UDP_Messenger.sendMessage = true;
+        //UDP_Messenger.msg = trialNum.ToString() + ", " + ptxID.ToString() + ", " + stimSeqOrder[StimSequence[trialNum]].ToString() + ", " + TargetForce.ToString() + " \n";
+        //UDP_Messenger.sendMessage = true;
 
         //if (activate)
         //{
