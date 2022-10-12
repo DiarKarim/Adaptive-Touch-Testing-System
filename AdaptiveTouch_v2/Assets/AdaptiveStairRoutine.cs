@@ -69,6 +69,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
 {
 
     private StairCase stair_30Hz;
+    private int[] StimSequence;
+    private int[] FreqOrder; 
 
     public SyntactsHub syntacts;
     private int collisionChannel = 0;
@@ -95,11 +97,20 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     void Start()
     {
+
         amp = initialAmp; 
 
         numbTrials = 15;
 
-        stair_30Hz = new StairCase(path, numbTrials);
+        StimSequence = new int[numbTrials];
+        StimSequence = CreateStimSequeces(StimSequence, 1);
+        Shuffle(StimSequence);
+
+        FreqOrder = new int[numbTrials]; 
+        FreqOrder = CreateStimSequeces(FreqOrder, 1);
+        Shuffle(FreqOrder);
+
+        //stair_30Hz = new StairCase(path, numbTrials);
 
         // Instructions sequence ==>> This leads to the main experiment sequence
         InstructRoutine = StartCoroutine(InstructionSequence());
@@ -110,25 +121,56 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         for (int i = 0; i < numbTrials; i++)
         {
-            Debug.Log("Amp: " + amp);
+            float amplitude;
 
+            // Randomly select which one of the two frequencies to use
+            int stimulus_frequency = 0; 
+            if (FreqOrder[i] == 0)
+            {
+                stimulus_frequency = frequencies[0];
+            }
+            else if (FreqOrder[i] == 1)
+            {
+                stimulus_frequency = frequencies[1];
+            }
 
-            instructionDisplay.text = "1st stimulus";
-            yield return new WaitForSeconds(0.5f);
-            Signal collision1 = new Sine(50);
-            float amplitude = amp; // Random.Range(0.05f, 0.95f);
-            collision1 = new Square(frequencies[1]) * new ASR(0.05, 0.075, 0.05) * amplitude;
-            syntacts.session.Play(collisionChannel, collision1);
-            yield return new WaitForSeconds(0.5f);
+            // Select which stimulus amplitude first (standard(reference) or stimulus amplitude first? 
+            if (StimSequence[i] == 0)
+            {
+                instructionDisplay.text = "1st stimulus";
+                yield return new WaitForSeconds(0.5f);
+                Signal collision1 = new Sine(50);
+                amplitude = amp; // Random.Range(0.05f, 0.95f);
+                collision1 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                syntacts.session.Play(collisionChannel, collision1);
+                yield return new WaitForSeconds(0.5f);
 
-            instructionDisplay.text = "2nd stimulus";
-            yield return new WaitForSeconds(0.5f);
-            Signal collision2 = new Sine(50);
-            amplitude = standardAmp; // Random.Range(0.05f, 0.95f);
-            collision2 = new Square(frequencies[1]) * new ASR(0.05, 0.075, 0.05) * amplitude;
-            syntacts.session.Play(collisionChannel, collision2);
-            yield return new WaitForSeconds(0.5f);
+                instructionDisplay.text = "2nd stimulus";
+                yield return new WaitForSeconds(0.5f);
+                Signal collision2 = new Sine(50);
+                amplitude = standardAmp; // Random.Range(0.05f, 0.95f);
+                collision2 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                syntacts.session.Play(collisionChannel, collision2);
+                yield return new WaitForSeconds(0.5f);
+            }
+            else if(StimSequence[i] == 1)
+            {
+                instructionDisplay.text = "1st stimulus";
+                yield return new WaitForSeconds(0.5f);
+                Signal collision2 = new Sine(50);
+                amplitude = standardAmp; // Random.Range(0.05f, 0.95f);
+                collision2 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                syntacts.session.Play(collisionChannel, collision2);
+                yield return new WaitForSeconds(0.5f);
 
+                instructionDisplay.text = "2nd stimulus";
+                yield return new WaitForSeconds(0.5f);
+                Signal collision1 = new Sine(50);
+                amplitude = amp; // Random.Range(0.05f, 0.95f);
+                collision1 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                syntacts.session.Play(collisionChannel, collision1);
+                yield return new WaitForSeconds(0.5f);
+            }
 
             instructionDisplay.text = "Which of the two stimuli felt more intense? \n\nPress A for 1st and D for 2nd";
             yield return new WaitForSeconds(0.1f);
@@ -148,6 +190,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return null;
             }
 
+            Debug.Log("User Resp: " + answer + " Stimulus: " + StimSequence[i] + " Amp: " + amp + " Freq: " + FreqOrder[i]);
+
             yield return new WaitForSeconds(0.1f);
             instructionDisplay.text = "Press S to continue";
             yield return new WaitForSeconds(0.5f);
@@ -161,7 +205,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             // Check answer and adjust next stimuli step size based on this
             int trialNum = i;
             
-            float next_stimulus = CheckAnswer();
+            float next_stimulus = CheckAnswer(StimSequence[i]);
             amp += next_stimulus; 
 
         }
@@ -172,23 +216,26 @@ public class AdaptiveStairRoutine : MonoBehaviour
     }
 
     // Check Answers
-    public float CheckAnswer()
+    public float CheckAnswer(int stimulus_position)
     {
         float nextStimulus = 0f;
 
-        if (answer == 0 & correctcounter == 0)
+        if (answer == stimulus_position & correctcounter == 0)
         {
             correctcounter++;
+            Debug.Log("Correct");
         }
-        else if (answer == 0 & correctcounter == 1)
+        else if (answer == stimulus_position & correctcounter == 1)
         {
             nextStimulus -= stepSize;
             correctcounter = 0;
+            Debug.Log("Correct");
         }
         else
         {
             nextStimulus += stepSize;
             correctcounter = 0;
+            Debug.Log("Wrong");
         }
         // if answer if correct twice then update the stimulus intensity
 
@@ -240,6 +287,37 @@ public class AdaptiveStairRoutine : MonoBehaviour
         ExpRoutine = StartCoroutine(ExperimentSequence());
 
         yield return null;
+    }
+
+    // Create Trial Stimulus Sequence
+    public int[] CreateStimSequeces(int[] stimseqs, int repeteVal)
+    {
+        int countr = 0;
+        for (int i = 0; i < stimseqs.Length; i++)
+        {
+            stimseqs[i] = countr;
+            countr++;
+
+            if (countr > repeteVal)
+            {
+                countr = 0;
+            }
+        }
+        return stimseqs;
+    }
+
+    // Shuffle Randomizer
+    static System.Random _random = new System.Random();
+    public static void Shuffle<T>(T[] array)
+    {
+        int n = array.Length;
+        for (int i = 0; i < (n - 1); i++)
+        {
+            int r = i + _random.Next(n - i);
+            T t = array[r];
+            array[r] = array[i];
+            array[i] = t;
+        }
     }
 
 }
