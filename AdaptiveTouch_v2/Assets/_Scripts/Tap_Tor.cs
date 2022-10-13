@@ -140,17 +140,27 @@ public class Tap_Tor : MonoBehaviour
 
     IEnumerator CalibrationSequence()
     {
-        Signal calib_sig1 = new Sine(50);
-        calib_sig1 = new Sine(300) * new ASR(0.1, 0.8f, 0.1) * 0.5f;
-        syntacts.session.Play(collisionChannel, calib_sig1);
+        for(int i = 0; i<40; i++)
+        {
+            Signal calib_sig = new Sine(50);
+            calib_sig = new Sine(10 * i) * new ASR(0.1, 1.8f, 0.1) * 5f;
+            syntacts.session.Play(collisionChannel, calib_sig);
 
-        yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(3f);
+        }
 
-        Signal calib_sig2 = new Sine(50);
-        calib_sig2 = new Sine(50) * new ASR(0.1, 0.8f, 0.1) * 5f;
-        syntacts.session.Play(collisionChannel, calib_sig2);
 
-        yield return new WaitForSeconds(1.25f);
+        //Signal calib_sig1 = new Sine(50);
+        //calib_sig1 = new Sine(174*2) * new ASR(0.1, 2f, 0.1) * 0.5f;
+        //syntacts.session.Play(collisionChannel, calib_sig1);
+
+        //yield return new WaitForSeconds(3f);
+
+        //Signal calib_sig2 = new Sine(50);
+        //calib_sig2 = new Sine(174) * new ASR(0.1, 5f, 0.1) * 5f;
+        //syntacts.session.Play(collisionChannel, calib_sig2);
+
+        //yield return new WaitForSeconds(5f);
 
         yield return null;
     }

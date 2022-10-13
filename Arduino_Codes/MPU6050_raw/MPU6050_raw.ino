@@ -124,7 +124,7 @@ void loop() {
     // these methods (and a few others) are also available
     //accelgyro.getAcceleration(&ax, &ay, &az);
     //accelgyro.getRotation(&gx, &gy, &gz);
-
+  
     #ifdef OUTPUT_READABLE_ACCELGYRO
         // display tab-separated accel/gyro x/y/z values
         Serial.print("a/g:\t");
