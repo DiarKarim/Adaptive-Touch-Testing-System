@@ -7156,13 +7156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a49fea12cab3a4f8cb2a60e9acfca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  experimentType: 0
   syntacts: {fileID: 1324504779}
   frequencies: 1e0000002c010000
   stimulitypes:
   - Standard
   - Stimulus
-  initialAmp: 0.1
-  standardAmp: 3
+  standardStimulus: 300
+  compStimulus: 0
   stepSize: 0.05
   minAmp: 0.025
   maxAmp: 0.25
