@@ -67,8 +67,7 @@ public class StairCase
 
 public class AdaptiveStairRoutine : MonoBehaviour
 {
-
-    private StairCase stair_30Hz;
+    //private StairCase stair_30Hz;
     private int[] StimSequence;
     private int[] FreqOrder; 
 
@@ -97,7 +96,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     void Start()
     {
-
         amp = initialAmp; 
 
         numbTrials = 15;
@@ -109,8 +107,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
         FreqOrder = new int[numbTrials]; 
         FreqOrder = CreateStimSequeces(FreqOrder, 1);
         Shuffle(FreqOrder);
-
-        //stair_30Hz = new StairCase(path, numbTrials);
 
         // Instructions sequence ==>> This leads to the main experiment sequence
         InstructRoutine = StartCoroutine(InstructionSequence());
@@ -141,7 +137,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 Signal collision1 = new Sine(50);
                 amplitude = amp; // Random.Range(0.05f, 0.95f);
-                collision1 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                collision1 = new Sine(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
                 yield return new WaitForSeconds(0.5f);
 
@@ -149,7 +145,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 Signal collision2 = new Sine(50);
                 amplitude = standardAmp; // Random.Range(0.05f, 0.95f);
-                collision2 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                collision2 = new Sine(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision2);
                 yield return new WaitForSeconds(0.5f);
             }
@@ -159,7 +155,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 Signal collision2 = new Sine(50);
                 amplitude = standardAmp; // Random.Range(0.05f, 0.95f);
-                collision2 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                collision2 = new Sine(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision2);
                 yield return new WaitForSeconds(0.5f);
 
@@ -167,7 +163,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 Signal collision1 = new Sine(50);
                 amplitude = amp; // Random.Range(0.05f, 0.95f);
-                collision1 = new Square(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                collision1 = new Sine(stimulus_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
                 yield return new WaitForSeconds(0.5f);
             }
@@ -318,6 +314,71 @@ public class AdaptiveStairRoutine : MonoBehaviour
             array[r] = array[i];
             array[i] = t;
         }
+    }
+
+
+    public float MapFreq2Amp(float frequency)
+    {
+        float amp = 0f;
+
+        if (frequency >= 185f)
+        {
+            if (frequency < 420 & frequency >= 370)
+                amp = 30f;
+            else if (frequency < 370 & frequency >= 350)
+                amp = 15f;
+            else if (frequency < 350 & frequency > 345)
+                amp = 6f;
+            else if (frequency <= 345 & frequency > 310)
+                amp = 2f;
+            else if (frequency <= 310 & frequency > 300)
+                amp = 1.1f;
+            else if (frequency <= 300 & frequency > 290)
+                amp = 1;
+            else if (frequency <= 290 & frequency > 280)
+                amp = 0.9f;
+            else if (frequency <= 280 & frequency > 270)
+                amp = 0.8f;
+            else if (frequency <= 270 & frequency > 250)
+                amp = 0.6f;
+            else if (frequency < 250 & frequency >= 230)
+                amp = 0.4f;
+            else if (frequency < 230 & frequency >= 220)
+                amp = 0.25f;
+            else if (frequency < 220 & frequency >= 200)
+                amp = 0.2f;
+        }
+        if (frequency < 150f)
+        {
+            if (frequency < 100 & frequency >= 90)
+                amp = 1.1f;
+            else if (frequency < 80 & frequency >= 90)
+                amp = 1.3f;
+            else if (frequency < 70 & frequency > 80)
+                amp = 1.4f;
+            else if (frequency <= 60 & frequency > 70)
+                amp = 1.5f;
+            else if (frequency <= 50 & frequency > 60)
+                amp = 1.6f;
+            else if (frequency <= 42 & frequency > 50)
+                amp = 1.8f;
+            else if (frequency <= 38 & frequency > 42)
+                amp = 2.4f;
+            else if (frequency <= 35 & frequency > 38)
+                amp = 2.5f;
+            else if (frequency <= 30 & frequency > 35)
+                amp = 3.2f;
+            else if (frequency < 25 & frequency >= 30)
+                amp = 3.3f;
+            else if (frequency < 22 & frequency >= 25)
+                amp = 3.9f;
+            else if (frequency < 20 & frequency >= 22)
+                amp = 4.7f;
+            else if (frequency < 10 & frequency >= 20)
+                amp = 5.7f;
+        }
+
+        return amp;
     }
 
 }
