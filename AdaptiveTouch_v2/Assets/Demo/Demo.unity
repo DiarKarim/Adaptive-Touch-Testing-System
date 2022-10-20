@@ -7162,8 +7162,6 @@ MonoBehaviour:
   stimulitypes:
   - Standard
   - Stimulus
-  standardStimulus: 300
-  compStimulus: 0
   stepSize: 0.05
   minAmp: 0.025
   maxAmp: 0.25
