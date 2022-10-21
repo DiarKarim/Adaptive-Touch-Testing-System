@@ -118,6 +118,15 @@ public class AdaptiveStairRoutine : MonoBehaviour
     {
         //amp = compStimulus; 
 
+        // Initial the correctCntHist
+
+        for (int i = 0; i < correctCntHist.Length; i++)
+        {
+            correctCntHist[i] = 0;
+            Debug.Log(correctCntHist[i]);
+        }
+
+
         numbTrials = 15;
 
         StimSequence = new int[numbTrials];
@@ -157,6 +166,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 }
             }
 
+            Debug.Log("Comparison frequency: " + comparisonFrequency);
 
 
             // Select which stimulus amplitude first (standard(reference) or stimulus amplitude first? 
@@ -166,7 +176,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.5f);
                 Signal collision1 = new Sine(50);
-                amplitude = MapFreq2Amp(standard_frequency); // Random.Range(0.05f, 0.95f);
+                amplitude = MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
                 collision1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
                 yield return new WaitForSeconds(0.5f);
@@ -178,30 +188,30 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 amplitude = 1f; // Random.Range(0.05f, 0.95f);
                 collision2 = new Sine(standard_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision2);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.65f);
             }
-            else if (StimSequence[i] == 1)
+            else //if (StimSequence[i] == 1)
             {
                 // Standard
                 instructionDisplay.text = "1st stimulus";
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.65f);
                 Signal collision2 = new Sine(50);
                 amplitude = 3.5f; // Random.Range(0.05f, 0.95f);
                 collision2 = new Sine(standard_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision2);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.65f);
 
                 // Comparison
                 instructionDisplay.text = "2nd stimulus";
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.65f);
                 Signal collision1 = new Sine(50);
-                amplitude = MapFreq2Amp(standard_frequency); // Random.Range(0.05f, 0.95f);
-                collision1 = new Sine(standard_frequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                amplitude = MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                collision1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
                 yield return new WaitForSeconds(0.5f);
             }
 
-            instructionDisplay.text = "Which of the two stimuli felt more intense? \n\nPress A for 1st and D for 2nd";
+            instructionDisplay.text = "Which of the two stimuli had a higher frequency? \n\nPress A for 1st and D for 2nd";
             yield return new WaitForSeconds(0.1f);
 
             while (true)
@@ -235,6 +245,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
             int trialNum = i;
 
             next_stimulus = CheckAnswerFreq(StimSequence[i], i, comparisonFrequency);
+            comparisonFrequency = comparisonFrequency + next_stimulus;
+            comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
             //amp += next_stimulus;
         }
 
@@ -308,7 +320,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
 
-            instructionDisplay.text = "Which of the two stimuli felt more intense? \n\nPress A for 1st and D for 2nd";
+            instructionDisplay.text = "Which of the two stimuli had a higher frequency? \n\nPress A for 1st and D for 2nd";
             yield return new WaitForSeconds(0.1f);
 
             while (true)
@@ -384,16 +396,15 @@ public class AdaptiveStairRoutine : MonoBehaviour
     public float CheckAnswerFreq(int stimulus_position, int idx, float compStim)
     {
         //float nextStimulus = 0f;
-
         if (answer == stimulus_position & correctcounter == 0)
         {
             correctcounter++;
-            correctCntHist[idx] = 1; 
+            correctCntHist[idx + 3] = 1;
             Debug.Log("Correct");
         }
         else if (answer == stimulus_position & correctcounter == 1)
         {
-            correctCntHist[idx] = 1;
+            correctCntHist[idx + 3] = 1;
             //nextStimulus -= stepSize;
             correctcounter = 0;
             Debug.Log("Correct");
@@ -402,38 +413,49 @@ public class AdaptiveStairRoutine : MonoBehaviour
         {
             //nextStimulus += stepSize;
             correctcounter = 0;
-            correctCntHist[idx] = 0;
+            correctCntHist[idx + 3] = 0;
             Debug.Log("Wrong");
         }
 
         // Reversal counter 
-        if (correctCntHist[idx] == 0 & correctCntHist[idx - 1] == 1 & correctCntHist[idx - 2] == 1)
+        if (correctCntHist[idx + 3] == 0 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 1)
         {
             print("Reversal: One down");
             reversalCnt_30++;
             reversalCnt_300++;
             stepDirection = -1;
-        }  
-        if (correctCntHist[idx] == 1 & correctCntHist[idx - 1] == 1 & correctCntHist[idx - 2] == 0)
+        }
+        if (correctCntHist[idx + 3] == 1 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 0)
         {
             print("Reversal: Two up");
             reversalCnt_30++;
             reversalCnt_300++;
-            stepDirection = 1; 
+            stepDirection = 1;
         }
-        if (correctCntHist[idx] == 0 & correctCntHist[idx - 1] == 1 & correctCntHist[idx - 2] == 0)
+        if (correctCntHist[idx + 3] == 0 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 0)
         {
             stepDirection = 1;
             print("Not reversal");
+            // Make it easier 
         }
-        if (correctCntHist[idx] == 1 & correctCntHist[idx - 1] == 1 & correctCntHist[idx - 2] == 1)
+        if (correctCntHist[idx + 3] == 1 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 1)
         {
             stepDirection = 1;
             print("Not reversal");
         }
 
 
-        float nextStimulus = stepDirection * (compStim + stepSizeFreq_300[reversalCnt_300]);  
+        float nextStimulus = 0f;
+
+        if (compStim > 200)
+        {
+            nextStimulus = stepDirection * (compStim + stepSizeFreq_300[reversalCnt_300]);
+        }
+        else
+        {
+            nextStimulus = stepDirection * (compStim + stepSizeFreq_30[reversalCnt_30]);
+        }
+
         // if answer is wrong once then update the stimulus 
         //comparisonFrequency = UpdateStimulusFreq(standard_frequency, comparisonFrequency);
 
