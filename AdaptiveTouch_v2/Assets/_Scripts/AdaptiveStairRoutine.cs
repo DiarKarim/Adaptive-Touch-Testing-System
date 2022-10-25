@@ -6,6 +6,8 @@ using TMPro;
 using Syntacts;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
+using System.Threading; 
 
 public class StairCase
 {
@@ -65,8 +67,34 @@ public class StairCase
     }
 }
 
+public class DataClass
+{
+    public string user_response = "";
+    public string correct = "";
+    public string standard_stim = "";
+    public string comparison_stim = "";
+
+    //public List<int> frameNum = new List<int>();
+    //public List<string> gameObjectName = new List<string>();
+    //public List<float> xPos = new List<float>();
+    //public List<float> yPos = new List<float>();
+    //public List<float> zPos = new List<float>();
+    //public List<float> xRot = new List<float>();
+    //public List<float> yRot = new List<float>();
+    //public List<float> zRot = new List<float>();
+    //public List<string> targetID = new List<string>();
+    //public List<float> xTPos = new List<float>();
+    //public List<float> yTPos = new List<float>();
+    //public List<float> zTPos = new List<float>();
+    //public List<float> time = new List<float>();
+}
+
 public class AdaptiveStairRoutine : MonoBehaviour
 {
+    public string participantID = "";
+
+    private DataClass expTrialData = new DataClass();
+    public Transform TrackedObjects;
 
     public enum myExpTypeEnum
     {
@@ -88,7 +116,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
     //public float standardStimulus;
     //public float compStimulus;
 
-
     public float stepSize;
     private int[] stepSizeFreq_300 = new int[] { 20, 10, 8, 5, 2 };
     private int[] stepSizeFreq_30 = new int[] { 10, 7, 5, 3, 1 };
@@ -101,21 +128,27 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     private int numbTrials;
     private Coroutine ExpRoutine, InstructRoutine, RunActuatorSeq;
-    private int correctCounter = 0;
     private int answer = 0;
     private int correctcounter = 0;
 
     public TMPro.TMP_Text instructionDisplay;
     public string path = "H:/Project/Adaptive-Touch-Testing-System/ATTS_Data/";
 
-    private float comparisonFrequency30 = 0f;
-    private float comparisonFrequency300 = 0f;
+    // Initial comparison freq.
+    private float comparisonFrequency30 = 80f; 
+    private float comparisonFrequency300 = 400f;
+
     private int reversalCnt_30 = 0;
     private int reversalCnt_300 = 0;
     private int[] correctCntHist = new int[500];
     private float next_stimulus;
     private bool firstTime30 = true;
     private bool firstTime300 = true;
+    private bool recording = false;
+    private float currTime, startTime = 0f;
+    private int frameNum = 0;
+
+    private Thread dataSaveThread;
 
     void Start()
     {
@@ -141,6 +174,66 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         // Instructions sequence ==>> This leads to the main experiment sequence
         InstructRoutine = StartCoroutine(InstructionSequence());
+
+        // For continously recording data uncomment this init function below and make sure "TrackedObjects" is filled in correctly in the inspector 
+        //Init();
+    }
+
+    private void Init()
+    {
+        dataSaveThread = new Thread(new ThreadStart(RecordDataFunc));
+        dataSaveThread.IsBackground = true;
+        dataSaveThread.Start();
+    }
+
+    void RecordDataFunc()
+    {
+        // ... record data as fast as possible while waiting for participant to hit the target 
+        if (recording)
+        {
+            currTime = UnityEngine.Time.time - startTime;
+
+            foreach (Transform trckdObj in TrackedObjects)
+            {
+                //// Repeated numbers 
+                //expTrialData.time.Add(currTime);
+                //expTrialData.frameNum.Add(frameNum);
+                //expTrialData.targetID.Add(targets[randTargetIndex].gameObject.name);
+                //expTrialData.xTPos.Add(targets[randTargetIndex].position.x);
+                //expTrialData.yTPos.Add(targets[randTargetIndex].position.y);
+                //expTrialData.zTPos.Add(targets[randTargetIndex].position.z);
+
+                //// Frame-by-frame numbers 
+                //expTrialData.gameObjectName.Add(trckdObj.gameObject.name);
+                //expTrialData.xPos.Add(trckdObj.position.x);
+                //expTrialData.yPos.Add(trckdObj.position.y);
+                //expTrialData.zPos.Add(trckdObj.position.z);
+                //expTrialData.xRot.Add(trckdObj.eulerAngles.x);
+                //expTrialData.yRot.Add(trckdObj.eulerAngles.y);
+                //expTrialData.zRot.Add(trckdObj.eulerAngles.z);
+            }
+            frameNum++;
+        }
+    }
+
+    private IEnumerator Upload2(string trialName)
+    {
+        // Convert to json and send to another site on the server
+        //expData.conditionInfo = userIDPost;
+        //expData.dataTable = recordDataList.ToArray();
+
+        //string jsonString = JsonConvert.SerializeObject(expData, Formatting.Indented);
+        string jsonString = JsonConvert.SerializeObject(expTrialData, Formatting.Indented);
+
+        // Save jsonString variable in a file 
+        File.WriteAllText(path + "/" + trialName, jsonString);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        // Empty text fields for next trials (potential for issues with next trial)
+        //recordDataList.Clear();
+        expTrialData = new DataClass(); // Clear class 
+
+        yield return null;
     }
 
     #region Debug stuff
@@ -200,7 +293,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     IEnumerator ExperimentSequenceFreq2()
     {
-        comparisonFrequency30 = 80; // Initial comparison freq.
 
         for (int i = 0; i < numbTrials; i++)
         {
@@ -241,8 +333,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 syntacts.session.Play(collisionChannel, collision1);
                 yield return new WaitForSeconds(0.65f);
             }
+            
             instructionDisplay.text = "Which of the two stimuli had a higher frequency? \n\nPress A for 1st and D for 2nd";
+            
             yield return new WaitForSeconds(0.1f);
+            
             while (true)
             {
                 if (Input.GetKeyDown(KeyCode.A))
@@ -258,6 +353,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return null;
             }
 
+            expTrialData.user_response = answer.ToString();
+            expTrialData.correct = answer.ToString();
+            expTrialData.standard_stim = StimSequence[i].ToString();
+            expTrialData.comparison_stim = comparisonFrequency30.ToString();
+
             next_stimulus = CheckAnswerFreq(StimSequence[i], i, comparisonFrequency30);
             comparisonFrequency30 = comparisonFrequency30 + next_stimulus;
             comparisonFrequency30 = Mathf.Sqrt(comparisonFrequency30 * comparisonFrequency30);
@@ -271,6 +371,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     break;
                 yield return null;
             }
+
+            StartCoroutine(Upload2(participantID  + "_Stand_30Hz_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + i.ToString() + "_.json")); 
         }
 
         instructionDisplay.text = "End \n\nThanks for your participation";
@@ -532,8 +634,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
     public float UpdateStimulusFreq(float standardFreq, float compFreq)
     {
         float newFreq = 0f;
-
-
 
         return newFreq;
     }
@@ -920,7 +1020,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
         //Debug.Log("Amp: " + amp);
         return amp;
     }
-
 }
 
 
