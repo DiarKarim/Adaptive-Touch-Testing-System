@@ -7156,7 +7156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a49fea12cab3a4f8cb2a60e9acfca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participantID: pilot_x
+  participantID: pilot_x2
   TrackedObjects: {fileID: 1112946705}
   experimentType: 0
   syntacts: {fileID: 1324504779}
