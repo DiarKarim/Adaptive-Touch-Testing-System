@@ -7156,7 +7156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a49fea12cab3a4f8cb2a60e9acfca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participantID: pilot_x2
+  participantID: pilot_x3
   TrackedObjects: {fileID: 1112946705}
   experimentType: 0
   syntacts: {fileID: 1324504779}
@@ -7167,8 +7167,9 @@ MonoBehaviour:
   stepSize: 0.05
   minAmp: 0.025
   maxAmp: 0.25
+  maxNumbTrials: 100
   instructionDisplay: {fileID: 78065450}
-  path: H:/Project/Adaptive-Touch-Testing-System/ATTS_Data/
+  path: C:\Users\ObiPC\OneDrive\Projects\Adaptive-Touch-Testing-System\ATTS_Data/
 --- !u!1 &1941757683
 GameObject:
   m_ObjectHideFlags: 0

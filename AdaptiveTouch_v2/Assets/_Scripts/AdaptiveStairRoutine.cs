@@ -69,10 +69,13 @@ public class StairCase
 
 public class DataClass
 {
-    public string user_response = "";
-    public string correct = "";
-    public string standard_stim = "";
-    public string comparison_stim = "";
+    public List<int> user_response = new List<int>();
+    public List<int> trialNumber = new List<int>();
+    public List<float> standard_stim = new List<float>();
+    public List<float> comparison_stim = new List<float>();
+    public List<float> standard_freq = new List<float>();
+    public List<float> comp_freq = new List<float>();
+    public List<string> correct = new List<string>();
 
     //public List<int> frameNum = new List<int>();
     //public List<string> gameObjectName = new List<string>();
@@ -91,6 +94,8 @@ public class DataClass
 
 public class AdaptiveStairRoutine : MonoBehaviour
 {
+    private bool endReversals; 
+
     public string participantID = "";
 
     private DataClass expTrialData = new DataClass();
@@ -151,6 +156,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
     private string checkedAnswer = "";
 
     private Thread dataSaveThread;
+    private int standardFrequency = 0;
+    private float[] comFreq = new float[2];
+    private bool done30, done300; 
 
     void Start()
     {
@@ -298,6 +306,25 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         for (int i = 0; i < numbTrials; i++)
         {
+            if(FreqOrder[i] == 0)
+            {
+                standardFrequency = 30;
+                if (done30)
+                {
+                    comparisonFrequency30 = comFreq[0];
+                    done30 = false; 
+                }
+            }
+            else
+            {
+                standardFrequency = 300;
+                if (done300)
+                {
+                    comparisonFrequency30 = comFreq[1];
+                    done300 = false; 
+                }
+            }
+
             if (StimSequence[i] == 0) // Standard first then comparison stimulus 
             {
                 Debug.Log("Stim first i.e. press A for correct, Freq: " + comparisonFrequency30.ToString());
@@ -314,7 +341,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.2f);
                 amplitude = 3.5f; // Random.Range(0.05f, 0.95f);
-                Signal collision1 = new Sine(30) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                Signal collision1 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
                 yield return new WaitForSeconds(1f);
             }
@@ -326,7 +353,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.2f);
                 float amplitude = 3.5f; // Random.Range(0.05f, 0.95f);
-                Signal collision1 = new Sine(30) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                Signal collision1 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
                 yield return new WaitForSeconds(1f);
 
@@ -362,12 +389,26 @@ public class AdaptiveStairRoutine : MonoBehaviour
             comparisonFrequency30 = comparisonFrequency30 + next_stimulus;
             comparisonFrequency30 = Mathf.Sqrt(comparisonFrequency30 * comparisonFrequency30);
 
+            // Make a note of the previous comparison freq 
+            if (FreqOrder[i] == 0)
+            {
+                comFreq[0] = comparisonFrequency30;
+                done30 = true;
+            }
+            if (FreqOrder[i] == 1)
+            {
+                comFreq[1] = comparisonFrequency30;
+                done300 = true;
+            }
+
             // Record data 
-            expTrialData.user_response = answer.ToString();
-            expTrialData.correct = checkedAnswer;
-            expTrialData.standard_stim = StimSequence[i].ToString();
-            expTrialData.comparison_stim = comparisonFrequency30.ToString();
-            StartCoroutine(Upload2(participantID + "_Stand_30Hz_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + i.ToString() + "_.json"));
+            expTrialData.user_response.Add(answer);
+            expTrialData.correct.Add(checkedAnswer);
+            expTrialData.standard_stim.Add(StimSequence[i]);
+            expTrialData.comparison_stim.Add(comparisonFrequency30);
+            expTrialData.standard_freq.Add(standardFrequency);
+            expTrialData.comp_freq.Add(comparisonFrequency30);
+            expTrialData.trialNumber.Add(i);
 
             yield return new WaitForSeconds(0.2f);
             instructionDisplay.text = "Press S to continue";
@@ -378,7 +419,12 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     break;
                 yield return null;
             }
+
+            if (endReversals)
+                break; 
         }
+
+        StartCoroutine(Upload2(participantID + "_standard_" + standardFrequency + "comparisonFrequency" + comparisonFrequency30 + "_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + numbTrials.ToString() + "_.json"));
 
         instructionDisplay.text = "End \n\nThanks for your participation";
         yield return null;
@@ -952,6 +998,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         // if answer is wrong once then update the stimulus 
         //comparisonFrequency = UpdateStimulusFreq(standard_frequency, comparisonFrequency);
+
+        if(reversalCnt_30 >= 9)
+            endReversals = true; 
 
         return nextStimulus;
     }
