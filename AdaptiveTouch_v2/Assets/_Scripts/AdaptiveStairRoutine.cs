@@ -94,7 +94,7 @@ public class DataClass
 
 public class AdaptiveStairRoutine : MonoBehaviour
 {
-    private bool endReversals; 
+    private bool endReversals;
 
     public string participantID = "";
 
@@ -138,10 +138,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
     private int correctcounter = 0;
 
     public TMPro.TMP_Text instructionDisplay;
-    public string path = "H:/Project/Adaptive-Touch-Testing-System/ATTS_Data/";
+    public TMPro.TMP_Text pathDisplay;
+    private string path; // = "H:/Project/Adaptive-Touch-Testing-System/ATTS_Data/";
 
     // Initial comparison freq.
-    private float comparisonFrequency30 = 80f; 
+    private float comparisonFrequency = 80f;
     private float comparisonFrequency300 = 400f;
 
     private int reversalCnt_30 = 0;
@@ -157,11 +158,14 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     private Thread dataSaveThread;
     private int standardFrequency = 0;
-    private float[] comFreq = new float[2];
+    private float[] comFreq = new float[2] { 80f, 400f};
     private bool done30, done300; 
 
     void Start()
     {
+        path = Application.persistentDataPath;
+        pathDisplay.text = path; 
+
         numbTrials = maxNumbTrials; 
 
         //amp = compStimulus; 
@@ -306,40 +310,43 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         for (int i = 0; i < numbTrials; i++)
         {
+            // 1. Set standard frequency based on frequency order i.e. either 30 or 300 
+            // 2. Set the current comparison frequency based on the last relevant recorded one i.e.
+            // if previous trial had standard frequency of 30 Hz but currenty standard is 300, then compFreq[1] should be used for the current trial 
             if(FreqOrder[i] == 0)
             {
                 standardFrequency = 30;
-                if (done30)
-                {
-                    comparisonFrequency30 = comFreq[0];
-                    done30 = false; 
-                }
+                //if (done30)
+                //{
+                    comparisonFrequency = comFreq[0];
+                //    done30 = false; 
+                //}
             }
             else
             {
                 standardFrequency = 300;
-                if (done300)
-                {
-                    comparisonFrequency30 = comFreq[1];
-                    done300 = false; 
-                }
+                //if (done300)
+                //{
+                    comparisonFrequency = comFreq[1];
+                //    done300 = false; 
+                //}
             }
 
             if (StimSequence[i] == 0) // Standard first then comparison stimulus 
             {
-                Debug.Log("Stim first i.e. press A for correct, Freq: " + comparisonFrequency30.ToString());
+                Debug.Log("Stim first i.e. press A for correct, Freq: " + comparisonFrequency.ToString());
 
                 // Comparison
                 instructionDisplay.text = "1st stimulus";
-                yield return new WaitForSeconds(0.2f);
-                float amplitude = 2f; // MapFreq2Amp(comparisonFrequency30); // Random.Range(0.05f, 0.95f);
-                Signal collision2 = new Sine(comparisonFrequency30) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                yield return new WaitForSeconds(0.1f);
+                float amplitude = 2f; // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                Signal collision2 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision2);
                 yield return new WaitForSeconds(1f);
 
                 // Standard
                 instructionDisplay.text = "2nd  stimulus";
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
                 amplitude = 3.5f; // Random.Range(0.05f, 0.95f);
                 Signal collision1 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
@@ -347,11 +354,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
             else if (StimSequence[i] == 1) // Comparison stimulus first then standard 
             {
-                Debug.Log("Comparison first i.e. press D for correct, Freq: " + comparisonFrequency30.ToString());
+                Debug.Log("Comparison first i.e. press D for correct, Freq: " + comparisonFrequency.ToString());
 
                 // Standard
                 instructionDisplay.text = "1st stimulus";
-                yield return new WaitForSeconds(0.2f);
+                yield return new WaitForSeconds(0.1f);
                 float amplitude = 3.5f; // Random.Range(0.05f, 0.95f);
                 Signal collision1 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision1);
@@ -359,9 +366,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
                 // Comparison
                 instructionDisplay.text = "2nd  stimulus";
-                yield return new WaitForSeconds(0.2f);
-                amplitude = 2f; // MapFreq2Amp(comparisonFrequency30); // Random.Range(0.05f, 0.95f);
-                Signal collision2 = new Sine(comparisonFrequency30) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                yield return new WaitForSeconds(0.1f);
+                amplitude = 2f; // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                Signal collision2 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                 syntacts.session.Play(collisionChannel, collision2);
                 yield return new WaitForSeconds(1f);
             }
@@ -385,29 +392,29 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
 
             // Check answer and update stimulus 
-            next_stimulus = CheckAnswerFreq(StimSequence[i], answer, i, comparisonFrequency30);
-            comparisonFrequency30 = comparisonFrequency30 + next_stimulus;
-            comparisonFrequency30 = Mathf.Sqrt(comparisonFrequency30 * comparisonFrequency30);
+            next_stimulus = CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+            comparisonFrequency = comparisonFrequency + next_stimulus;
+            comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
 
-            // Make a note of the previous comparison freq 
+            // Make a note of the previous comparison freq based on the standard frequency 
             if (FreqOrder[i] == 0)
             {
-                comFreq[0] = comparisonFrequency30;
-                done30 = true;
+                comFreq[0] = comparisonFrequency;
+                //done30 = true;
             }
             if (FreqOrder[i] == 1)
             {
-                comFreq[1] = comparisonFrequency30;
-                done300 = true;
+                comFreq[1] = comparisonFrequency;
+                //done300 = true;
             }
 
             // Record data 
             expTrialData.user_response.Add(answer);
             expTrialData.correct.Add(checkedAnswer);
             expTrialData.standard_stim.Add(StimSequence[i]);
-            expTrialData.comparison_stim.Add(comparisonFrequency30);
+            expTrialData.comparison_stim.Add(comparisonFrequency);
             expTrialData.standard_freq.Add(standardFrequency);
-            expTrialData.comp_freq.Add(comparisonFrequency30);
+            expTrialData.comp_freq.Add(comparisonFrequency);
             expTrialData.trialNumber.Add(i);
 
             yield return new WaitForSeconds(0.2f);
@@ -424,7 +431,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 break; 
         }
 
-        StartCoroutine(Upload2(participantID + "_standard_" + standardFrequency + "comparisonFrequency" + comparisonFrequency30 + "_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + numbTrials.ToString() + "_.json"));
+        StartCoroutine(Upload2(participantID + "_standard_" + standardFrequency + "comparisonFrequency" + comparisonFrequency + "_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + numbTrials.ToString() + "_.json"));
 
         instructionDisplay.text = "End \n\nThanks for your participation";
         yield return null;
@@ -451,7 +458,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     // Set initial comparison stimuli
                     if (firstTime30)
                     {
-                        comparisonFrequency30 = 80; // Initial comparison freq.
+                        comparisonFrequency = 80; // Initial comparison freq.
                         firstTime30 = false;
                     }
 
@@ -468,8 +475,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     instructionDisplay.text = "2nd stimulus";
                     yield return new WaitForSeconds(0.5f);
                     Signal collision1 = new Sine(50);
-                    amplitude = 1f; // MapFreq2Amp(comparisonFrequency30); // Random.Range(0.05f, 0.95f);
-                    collision1 = new Sine(comparisonFrequency30) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                    amplitude = 1f; // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                    collision1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                     syntacts.session.Play(collisionChannel, collision1);
                     yield return new WaitForSeconds(0.5f);
 
@@ -492,11 +499,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     }
                     Debug.Log("User Resp: " + answer + " Stimulus: " + FreqOrder[i] + " Amp: " + amp);
                     int trialNum = i;
-                    next_stimulus = CheckAnswerFreq(FreqOrder[i], answer, i, comparisonFrequency30);
-                    comparisonFrequency30 = comparisonFrequency30 + next_stimulus;
-                    comparisonFrequency30 = Mathf.Sqrt(comparisonFrequency30 * comparisonFrequency30);
+                    next_stimulus = CheckAnswerUpdateStimulus(FreqOrder[i], answer, i, comparisonFrequency);
+                    comparisonFrequency = comparisonFrequency + next_stimulus;
+                    comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
                     //amp += next_stimulus;
-                    Debug.Log("Comparison frequency 300: " + comparisonFrequency30 + " Standard freq: " + standard_frequency + " Amp: " + amplitude);
+                    Debug.Log("Comparison frequency 300: " + comparisonFrequency + " Standard freq: " + standard_frequency + " Amp: " + amplitude);
                 }
                 else if (FreqOrder[i] == 1)
                 {
@@ -545,7 +552,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     }
                     Debug.Log("User Resp: " + answer + " Stimulus: " + FreqOrder[i] + " Amp: " + amp);
                     int trialNum = i;
-                    next_stimulus = CheckAnswerFreq(FreqOrder[i], answer, i, comparisonFrequency300);
+                    next_stimulus = CheckAnswerUpdateStimulus(FreqOrder[i], answer, i, comparisonFrequency300);
                     comparisonFrequency300 = comparisonFrequency300 + next_stimulus;
                     comparisonFrequency300 = Mathf.Sqrt(comparisonFrequency300 * comparisonFrequency300);
                     //amp += next_stimulus;
@@ -560,7 +567,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     // Set initial comparison stimuli
                     if (firstTime30)
                     {
-                        comparisonFrequency30 = 80; // Initial comparison freq.
+                        comparisonFrequency = 80; // Initial comparison freq.
                         firstTime30 = false;
                     }
 
@@ -568,8 +575,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     instructionDisplay.text = "1st stimulus";
                     yield return new WaitForSeconds(0.5f);
                     Signal collision1 = new Sine(50);
-                    amplitude = 1f; // MapFreq2Amp(comparisonFrequency30); // Random.Range(0.05f, 0.95f);
-                    collision1 = new Sine(comparisonFrequency30) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                    amplitude = 1f; // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                    collision1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
                     syntacts.session.Play(collisionChannel, collision1);
                     yield return new WaitForSeconds(0.5f);
 
@@ -602,11 +609,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     }
                     Debug.Log("User Resp: " + answer + " Stimulus: " + FreqOrder[i] + " Amp: " + amp);
                     int trialNum = i;
-                    next_stimulus = CheckAnswerFreq(FreqOrder[i], answer, i, comparisonFrequency30);
-                    comparisonFrequency30 = comparisonFrequency30 + next_stimulus;
-                    comparisonFrequency30 = Mathf.Sqrt(comparisonFrequency30 * comparisonFrequency30);
+                    next_stimulus = CheckAnswerUpdateStimulus(FreqOrder[i], answer, i, comparisonFrequency);
+                    comparisonFrequency = comparisonFrequency + next_stimulus;
+                    comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
                     //amp += next_stimulus;
-                    Debug.Log("Comparison frequency 300: " + comparisonFrequency30 + " Standard freq: " + standard_frequency + " Amp: " + amplitude);
+                    Debug.Log("Comparison frequency 300: " + comparisonFrequency + " Standard freq: " + standard_frequency + " Amp: " + amplitude);
                 }
                 else if (FreqOrder[i] == 1)
                 {
@@ -656,7 +663,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     }
                     Debug.Log("User Resp: " + answer + " Stimulus: " + FreqOrder[i] + " Amp: " + amp);
                     int trialNum = i;
-                    next_stimulus = CheckAnswerFreq(FreqOrder[i], answer, i, comparisonFrequency300);
+                    next_stimulus = CheckAnswerUpdateStimulus(FreqOrder[i], answer, i, comparisonFrequency300);
                     comparisonFrequency300 = comparisonFrequency300 + next_stimulus;
                     comparisonFrequency300 = Mathf.Sqrt(comparisonFrequency300 * comparisonFrequency300);
                     //amp += next_stimulus;
@@ -859,9 +866,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
     }
 
     // Check Answers freq
-    public float CheckAnswerFreq(int stimulus_position, int answer, int idx, float compStim)
+    public float CheckAnswerUpdateStimulus(int stimulus_position, int answer, int idx, float compStim)
     {
         float nextStimulus = 0f;
+
+        Debug.Log("Answer: " + "StimPos: " + stimulus_position + " Answer: " + answer + " ComparisonFreq: " + compStim);
 
         if (answer == stimulus_position & correctcounter == 0)
         {
@@ -1158,7 +1167,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
 //    if (firstTime30)
 //    {
-//        comparisonFrequency30 = 80f; // Initial comparison freq.
+//        comparisonFrequency = 80f; // Initial comparison freq.
 //        firstTime30 = false;
 //    }
 
@@ -1175,8 +1184,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
 //    instructionDisplay.text = "2nd stimulus";
 //    yield return new WaitForSeconds(0.65f);
 //    Signal collision1 = new Sine(50);
-//    amplitude = /*MapFreq2Amp*/(comparisonFrequency30); // Random.Range(0.05f, 0.95f);
-//    collision1 = new Sine(comparisonFrequency30) * new ASR(0.05, 0.075, 0.05) * amplitude;
+//    amplitude = /*MapFreq2Amp*/(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+//    collision1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amplitude;
 //    syntacts.session.Play(collisionChannel, collision1);
 //    yield return new WaitForSeconds(0.5f);
 
@@ -1200,10 +1209,10 @@ public class AdaptiveStairRoutine : MonoBehaviour
 //    }
 //    Debug.Log("User Resp: " + answer + " Stimulus: " + FreqOrder[i] + " Amp: " + amp);
 //    int trialNum = i;
-//    next_stimulus = CheckAnswerFreq(FreqOrder[i], i, comparisonFrequency30);
-//    comparisonFrequency30 = comparisonFrequency30 + next_stimulus;
-//    comparisonFrequency30 = Mathf.Sqrt(comparisonFrequency30 * comparisonFrequency30);
+//    next_stimulus = CheckAnswerUpdateStimulus(FreqOrder[i], i, comparisonFrequency);
+//    comparisonFrequency = comparisonFrequency + next_stimulus;
+//    comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
 //    //amp += next_stimulus;
-//    Debug.Log("Comparison frequency 30: " + comparisonFrequency30 + " Standard freq: " + standard_frequency + " Amp: " + amplitude);
+//    Debug.Log("Comparison frequency 30: " + comparisonFrequency + " Standard freq: " + standard_frequency + " Amp: " + amplitude);
 
 //}
