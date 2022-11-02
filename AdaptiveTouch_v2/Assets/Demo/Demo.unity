@@ -7302,7 +7302,7 @@ MonoBehaviour:
   stepSize: 0.05
   minAmp: 0.025
   maxAmp: 0.25
-  maxNumbTrials: 50
+  maxNumbTrials: 100
   instructionDisplay: {fileID: 78065450}
   pathDisplay: {fileID: 851622746}
 --- !u!1 &1941757683
