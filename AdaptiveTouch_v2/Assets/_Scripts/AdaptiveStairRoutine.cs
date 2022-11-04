@@ -122,8 +122,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
     //public float compStimulus;
 
     public float stepSize;
-    private int[] stepSizeFreq_300 = new int[] { 20, 10, 8, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
-    private int[] stepSizeFreq_30 = new int[] { 10, 7, 5, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+    private int[] stepSizeFreq_300 = new int[] { 20, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    private int[] stepSizeFreq_30 = new int[] { 10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
     private int stepDirection = -1;
 
     public float minAmp;
