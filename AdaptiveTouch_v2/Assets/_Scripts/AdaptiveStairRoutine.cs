@@ -116,14 +116,18 @@ public class AdaptiveStairRoutine : MonoBehaviour
     public SyntactsHub syntacts;
     private int collisionChannel = 0;
 
+    // Initial comparison freq.
+    public float[] comFreq = new float[2] { 80f, 400f };
+    private float comparisonFrequency = 80f;
+    private float comparisonFrequency300 = 400f;
     public int[] frequencies;
     public string[] stimulitypes;
     //public float standardStimulus;
     //public float compStimulus;
 
     public float stepSize;
-    private int[] stepSizeFreq_300 = new int[] { 20, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    private int[] stepSizeFreq_30 = new int[] { 10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+    public int[] stepSizeFreq_30 = new int[] { 10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2};
+    public int[] stepSizeFreq_300 = new int[] { 20, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 };
     private int stepDirection = -1;
 
     public float minAmp;
@@ -141,10 +145,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
     public TMPro.TMP_Text pathDisplay;
     private string path; // = "H:/Project/Adaptive-Touch-Testing-System/ATTS_Data/";
 
-    // Initial comparison freq.
-    private float comparisonFrequency = 80f;
-    private float comparisonFrequency300 = 400f;
-
     private int reversalCnt_30 = 0;
     private int reversalCnt_300 = 0;
     private int[] correctCntHist = new int[500];
@@ -158,15 +158,22 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     private Thread dataSaveThread;
     private int standardFrequency = 0;
-    private float[] comFreq = new float[2] { 80f, 400f};
-    private bool done30, done300; 
+    private bool done30, done300;
+
+    public int reversals; 
+    public Slider ProgressSlider, ReversalSlider; 
 
     void Start()
     {
         path = Application.persistentDataPath;
         pathDisplay.text = path; 
 
-        numbTrials = maxNumbTrials; 
+        numbTrials = maxNumbTrials;
+
+        ProgressSlider.minValue = 0;
+        ProgressSlider.maxValue = maxNumbTrials;
+        ReversalSlider.minValue = 0;
+        ReversalSlider.maxValue = reversals;
 
         //amp = compStimulus; 
 
@@ -310,10 +317,12 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         for (int i = 0; i < numbTrials; i++)
         {
+            ProgressSlider.value = i; // Update progress bar on slider 
+
             // 1. Set standard frequency based on frequency order i.e. either 30 or 300 
             // 2. Set the current comparison frequency based on the last relevant recorded one i.e.
             // if previous trial had standard frequency of 30 Hz but currenty standard is 300, then compFreq[1] should be used for the current trial 
-            if(FreqOrder[i] == 0)
+            if (FreqOrder[i] == 0)
             {
                 standardFrequency = 30;
                 //if (done30)
@@ -391,21 +400,26 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return null;
             }
 
-            // Check answer and update stimulus 
-            next_stimulus = CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
-            comparisonFrequency = comparisonFrequency + next_stimulus;
-            comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
-
             // Make a note of the previous comparison freq based on the standard frequency 
             if (FreqOrder[i] == 0)
             {
-                comFreq[0] = comparisonFrequency;
+                // Check answer and update stimulus 
+                next_stimulus = CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                comparisonFrequency = comFreq[0] + next_stimulus;
+                comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
                 //done30 = true;
+
+                comFreq[0] = comparisonFrequency;
             }
             if (FreqOrder[i] == 1)
             {
-                comFreq[1] = comparisonFrequency;
+                // Check answer and update stimulus 
+                next_stimulus = CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                comparisonFrequency = comFreq[1] + next_stimulus;
+                comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
                 //done300 = true;
+
+                comFreq[1] = comparisonFrequency;
             }
 
             // Record data 
@@ -866,7 +880,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
     }
 
     // Check Answers freq
-    public float CheckAnswerUpdateStimulus(int stimulus_position, int answer, int idx, float compStim)
+    public float CheckAnswerUpdateStimulus(int stimulus_position, int answer, int trial, float compStim)
     {
         float nextStimulus = 0f;
 
@@ -875,13 +889,13 @@ public class AdaptiveStairRoutine : MonoBehaviour
         if (answer == stimulus_position & correctcounter == 0)
         {
             correctcounter += 1;
-            correctCntHist[idx + 3] = 1;
+            correctCntHist[trial + 3] = 1;
             Debug.Log("Correct");
             checkedAnswer = "Correct";
         }
         else if (answer == stimulus_position & correctcounter == 1)
         {
-            correctCntHist[idx + 3] = 1;
+            correctCntHist[trial + 3] = 1;
             //nextStimulus -= stepSize;
             correctcounter = 0;
             Debug.Log("Correct");
@@ -891,13 +905,13 @@ public class AdaptiveStairRoutine : MonoBehaviour
         {
             //nextStimulus += stepSize;
             correctcounter = 0;
-            correctCntHist[idx + 3] = 0;
+            correctCntHist[trial + 3] = 0;
             Debug.Log("Wrong");
             checkedAnswer = "Wrong";
         }
 
         // Reversal counter 
-        if (correctCntHist[idx + 3] == 0 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 1)
+        if (correctCntHist[trial + 3] == 0 & correctCntHist[(trial + 3) - 1] == 1 & correctCntHist[(trial + 3) - 2] == 1)
         {
             // print("Reversal: One down"); i.e. make it easier 
             reversalCnt_30++;
@@ -916,7 +930,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         }
         // Reversal counter 
-        if (correctCntHist[idx + 3] == 0 & correctCntHist[(idx + 3) - 1] == 0 & correctCntHist[(idx + 3) - 2] == 1)
+        if (correctCntHist[trial + 3] == 0 & correctCntHist[(trial + 3) - 1] == 0 & correctCntHist[(trial + 3) - 2] == 1)
         {
             // print("Reversal: One down"); i.e. make it easier 
             stepDirection = -1;
@@ -935,7 +949,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         }
         // Reversal counter 
-        if (correctCntHist[idx + 3] == 0 & correctCntHist[(idx + 3) - 1] == 0 & correctCntHist[(idx + 3) - 2] == 0)
+        if (correctCntHist[trial + 3] == 0 & correctCntHist[(trial + 3) - 1] == 0 & correctCntHist[(trial + 3) - 2] == 0)
         {
             // print("Reversal: One down"); i.e. make it easier 
             stepDirection = -1;
@@ -953,7 +967,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
 
         }
-        if (correctCntHist[idx + 3] == 1 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 0)
+        if (correctCntHist[trial + 3] == 1 & correctCntHist[(trial + 3) - 1] == 1 & correctCntHist[(trial + 3) - 2] == 0)
         {
             // print("Reversal: Two up");
             reversalCnt_30++;
@@ -973,7 +987,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
 
         }
-        if (correctCntHist[idx + 3] == 1 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 1 & correctCntHist[(idx + 3) - 3] == 1)
+        if (correctCntHist[trial + 3] == 1 & correctCntHist[(trial + 3) - 1] == 1 & correctCntHist[(trial + 3) - 2] == 1 & correctCntHist[(trial + 3) - 3] == 1)
         {
             // print("Reversal: Two up");
             //reversalCnt_30++;
@@ -993,13 +1007,13 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
 
         }
-        if (correctCntHist[idx + 3] == 0 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 0)
+        if (correctCntHist[trial + 3] == 0 & correctCntHist[(trial + 3) - 1] == 1 & correctCntHist[(trial + 3) - 2] == 0)
         {
             stepDirection = 1;
             // print("Not reversal");
             // Make it easier 
         }
-        if (correctCntHist[idx + 3] == 1 & correctCntHist[(idx + 3) - 1] == 1 & correctCntHist[(idx + 3) - 2] == 1)
+        if (correctCntHist[trial + 3] == 1 & correctCntHist[(trial + 3) - 1] == 1 & correctCntHist[(trial + 3) - 2] == 1)
         {
             stepDirection = 1;
             // print("Not reversal");
@@ -1007,8 +1021,12 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         // if answer is wrong once then update the stimulus 
         //comparisonFrequency = UpdateStimulusFreq(standard_frequency, comparisonFrequency);
+        if(reversalCnt_30 < reversalCnt_300)
+            ReversalSlider.value = reversalCnt_30; 
+        else
+            ReversalSlider.value = reversalCnt_300;
 
-        if(reversalCnt_30 >= 9)
+        if (reversalCnt_30 >= reversals & reversalCnt_300 >= reversals)
             endReversals = true; 
 
         return nextStimulus;
