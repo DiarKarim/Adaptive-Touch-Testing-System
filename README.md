@@ -26,7 +26,7 @@ users can adapt the test to their needs, such that critical parameters of the ex
 can be changed, including the number of frequencies, the frequencies, number of trials
 etc, see image below:
 
-![alt text](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ATTS%20UI.png?raw=true)
+![alt text](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ExperimentManager.png?raw=true)
 Figure 2: Unity code-free ExperimentManager and inspector interface for changing experimental parameters 
 
 ## Analysis and Results
@@ -37,7 +37,9 @@ discrimination ability of that participants. These figures were produced through
 accompanying python script ("StairCase_Analysis.ipynb") inside the Python_Codes
 folder in the root of this reposity, see Adaptive-Touch-TestingSystem/Python_Codes/StairCase_Analysis.ipynb.
 
-![alt text](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_30Hz_728.png?raw=true)
+<img src="[http://url/image.png](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_30Hz_728.png)" height="60" width="60" >
+
+![alt text](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_300Hz_613.png?raw=true)
 Figure 3: Results for low and high standard frequency comparisons 
 
 ## Requirements (Software)
