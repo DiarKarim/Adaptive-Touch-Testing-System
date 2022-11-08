@@ -10,7 +10,7 @@ either run the test either directly in Unity or via a build executable that can 
 been tested on Windows 10, see image below for an overview over the user-interface
 (UI) of the application.
 
-<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ATTS%20UI.png" height="300" width="450" >
+<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ATTS%20UI.png" height="300" width="400" >
 Figure 1: User interface 
 
 In the above image you will be able to adjust several of the stimuli parameters for
@@ -26,7 +26,7 @@ users can adapt the test to their needs, such that critical parameters of the ex
 can be changed, including the number of frequencies, the frequencies, number of trials
 etc, see image below:
 
-<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ExperimentManager.png" height="300" width="450" >
+<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ExperimentManager.png" height="300" width="400" >
 Figure 2: Unity code-free ExperimentManager and inspector interface for changing experimental parameters 
 
 ## Analysis and Results
@@ -37,9 +37,10 @@ discrimination ability of that participants. These figures were produced through
 accompanying python script ("StairCase_Analysis.ipynb") inside the Python_Codes
 folder in the root of this reposity, see Adaptive-Touch-TestingSystem/Python_Codes/StairCase_Analysis.ipynb.
 
-<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_30Hz_728.png" height="300" width="450" >
-<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_300Hz_613.png" height="300" width="450" >
-Figure 3: Results for low and high standard frequency comparisons 
+Low 30 Hz Standard             |  High 300 Hz Standard 
+:-------------------------:|:-------------------------:
+<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_30Hz_728.png" height="300" width="400" > |  <img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_300Hz_613.png" height="300" width="400" >
+Figure 3: Results for low (left) and high standard frequency comparisons 
 
 ## Requirements (Software)
 - [x] Python 3.8.8
