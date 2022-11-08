@@ -10,7 +10,7 @@ either run the test either directly in Unity or via a build executable that can 
 been tested on Windows 10, see image below for an overview over the user-interface
 (UI) of the application.
 
-![alt text](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ATTS%20UI.png?raw=true)
+<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ATTS%20UI.png" height="300" width="450" >
 Figure 1: User interface 
 
 In the above image you will be able to adjust several of the stimuli parameters for
@@ -26,7 +26,7 @@ users can adapt the test to their needs, such that critical parameters of the ex
 can be changed, including the number of frequencies, the frequencies, number of trials
 etc, see image below:
 
-![alt text](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ExperimentManager.png?raw=true)
+<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/ExperimentManager.png" height="300" width="450" >
 Figure 2: Unity code-free ExperimentManager and inspector interface for changing experimental parameters 
 
 ## Analysis and Results
