@@ -37,9 +37,8 @@ discrimination ability of that participants. These figures were produced through
 accompanying python script ("StairCase_Analysis.ipynb") inside the Python_Codes
 folder in the root of this reposity, see Adaptive-Touch-TestingSystem/Python_Codes/StairCase_Analysis.ipynb.
 
-<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_30Hz_728.png" height="60" width="60" >
-
-![alt text](https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_300Hz_613.png?raw=true)
+<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_30Hz_728.png" height="300" width="450" >
+<img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_300Hz_613.png" height="300" width="450" >
 Figure 3: Results for low and high standard frequency comparisons 
 
 ## Requirements (Software)
