@@ -40,6 +40,7 @@ folder in the root of this reposity, see Adaptive-Touch-TestingSystem/Python_Cod
 Low 30 Hz Standard             |  High 300 Hz Standard 
 :-------------------------:|:-------------------------:
 <img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_30Hz_728.png" height="300" width="400" > |  <img src="https://github.com/DiarKarim/Adaptive-Touch-Testing-System/blob/windows-version/Figures%20and%20Images/Freq_300Hz_613.png" height="300" width="400" >
+
 Figure 3: Results for low (left) and high standard frequency comparisons 
 
 ## Requirements (Software)
