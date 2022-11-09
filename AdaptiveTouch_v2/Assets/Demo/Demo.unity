@@ -8555,7 +8555,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1927506267}
-  - component: {fileID: 1927506266}
   - component: {fileID: 1927506268}
   m_Layer: 0
   m_Name: ExperimentManager
@@ -8564,30 +8563,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1927506266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927506265}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc809e4bf6ded14f828b200cf44c9a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stepSize: 0.1
-  minStepSize: 0.05
-  maxStepSize: 0.15
-  initialDelay: 0
-  decayFactor: 1.1
-  maxVal: 0.065
-  endAfterReversal: 8
-  directoryPath: C:\Users\ObiPC\OneDrive\Projects\Adaptive-Touch-Testing-System\Staircase_Results/
-  numTrials: 15
-  TargetForce: 0
-  fileName: pilot_00
-  ptxID: 0
 --- !u!4 &1927506267
 Transform:
   m_ObjectHideFlags: 0
@@ -8614,7 +8589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a49fea12cab3a4f8cb2a60e9acfca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  participantID: pilot_x3
+  participantID: alan2_
   TrackedObjects: {fileID: 1112946705}
   experimentType: 0
   syntacts: {fileID: 1324504779}

@@ -94,6 +94,8 @@ public class DataClass
 
 public class AdaptiveStairRoutine : MonoBehaviour
 {
+
+    #region Variables
     private bool endReversals;
 
     public string participantID = "";
@@ -167,6 +169,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     private int[] correctInARow_30 = new int[2] { 0, 0 };
     private int[] correctInARow_300 = new int[2] { 0, 0 };
+
+    #endregion
 
     void Start()
     {
@@ -388,7 +392,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
             
             instructionDisplay.text = "Which of the two stimuli had a higher frequency? \n\nPress A for 1st and D for 2nd";
-            yield return new WaitForSeconds(0.1f);
+            //yield return new WaitForSeconds(0.1f);
+
             // User response choice 
             while (true)
             {
@@ -438,15 +443,18 @@ public class AdaptiveStairRoutine : MonoBehaviour
             expTrialData.comp_freq.Add(comparisonFrequency);
             expTrialData.trialNumber.Add(i);
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.01f);
             instructionDisplay.text = "Press S to continue";
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             while (true)
             {
                 if (Input.GetKeyDown(KeyCode.S))
                     break;
                 yield return null;
             }
+
+            instructionDisplay.text = "Wait for stimulus ...";
+            yield return new WaitForSeconds(1f);
 
             if (endReversals)
                 break; 
@@ -925,17 +933,17 @@ public class AdaptiveStairRoutine : MonoBehaviour
         //if (frequency >= 185f)
         //{
         if (frequency < 420 & frequency >= 370)
-            amp = 30f;
+            amp = 5.7f;
         if (frequency < 370 & frequency >= 350)
-            amp = 15f;
+            amp = 4.7f;
         if (frequency < 350 & frequency > 345)
-            amp = 6f;
+            amp = 3.9f;
         if (frequency <= 345 & frequency > 310)
-            amp = 2f;
+            amp = 3.3f;
         if (frequency <= 310 & frequency > 300)
-            amp = 1.1f;
+            amp = 3.2f;
         if (frequency <= 300 & frequency > 290)
-            amp = 1;
+            amp = 2f;
         if (frequency <= 290 & frequency > 280)
             amp = 0.9f;
         if (frequency <= 280 & frequency > 270)
