@@ -323,6 +323,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     IEnumerator ExperimentSequenceFreq2()
     {
+        // Roberta suggestion (3) Breaktime forced at 2.5 minute mark 
+        float startTime = UnityEngine.Time.time; 
 
         for (int i = 0; i < numbTrials; i++)
         {
@@ -395,6 +397,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
             //yield return new WaitForSeconds(0.1f);
 
             // User response choice 
+            float startResponseTimer = UnityEngine.Time.time;
+            float allowedResponseTime = 5f; 
             while (true)
             {
                 if (Input.GetKeyDown(KeyCode.A))
@@ -405,6 +409,12 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D))
                 {
                     answer = 1;
+                    break;
+                }
+                // Roberta suggestion (5) Repeat trial if ppts failes to respond within 5 seconds 
+                if((UnityEngine.Time.time - startResponseTimer) > allowedResponseTime)
+                {
+                    i--;
                     break;
                 }
                 yield return null;
@@ -453,8 +463,17 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return null;
             }
 
-            instructionDisplay.text = "Wait for stimulus ...";
-            yield return new WaitForSeconds(1f);
+
+            // Roberta suggestion (3) Breaktime 
+            if ((UnityEngine.Time.time - startTime) > (2.5f * 60f) &&
+                (UnityEngine.Time.time - startTime) < (3f * 60f))
+            {
+                instructionDisplay.text = "Please take a short break!";
+            }
+
+            instructionDisplay.text = "Next stimulus about to start...";
+            float waitRandon = Random.Range(0.8f, 1.2f); // Roberta suggestion (1) with random wait time between trials 
+            yield return new WaitForSeconds(waitRandon);
 
             if (endReversals)
                 break; 
