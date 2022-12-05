@@ -33,7 +33,8 @@ public class Tap_Tor : MonoBehaviour
     private Vector3 worldPosition;
     private Plane plane = new Plane(Vector3.forward, 0);
 
-    Coroutine CalibrationRoutine; 
+    Coroutine CalibrationRoutine;
+    public bool vibrate;
 
     //public int velocityChannel = 1;
     //public float velocityFreq = 200;
@@ -44,11 +45,16 @@ public class Tap_Tor : MonoBehaviour
         //syntacts.session.Play(velocityChannel, new Sine(velocityFreq) * new Sine(5));
     }
 
+    public void Vibrate()
+    {
+        vibrate = true; 
+    }
+
     void Update()
     {
         //syntacts.session.SetPitch(velocityChannel, 1 + rb.velocity.magnitude * 0.1);
 
-        if (Input.GetMouseButtonDown(0))
+        if(vibrate) //(Input.GetMouseButtonDown(0))
         {
             //Vector3 mousePos = Input.mousePosition;
             //Debug.Log("x: " + mousePos.x.ToString("F1") + "\t y: " + mousePos.y.ToString("F1"));
@@ -57,16 +63,17 @@ public class Tap_Tor : MonoBehaviour
             //Debug.Log("x: " + worldPosition.x.ToString("F1") + " y: " + worldPosition.y.ToString("F1") + " z: " + worldPosition.z.ToString("F1"));
 
 
-            float distance;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (plane.Raycast(ray, out distance))
-            {
-                worldPosition = ray.GetPoint(distance);
-            }
+            //float distance;
+            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //if (plane.Raycast(ray, out distance))
+            //{
+            //    worldPosition = ray.GetPoint(distance);
+            //}
+
             //Debug.Log("x: " + worldPosition.x.ToString("F1") + " y: " + worldPosition.y.ToString("F1") + " z: " + worldPosition.z.ToString("F1"));
 
-            if (worldPosition.x < 0.0f)
-            {
+            //if (worldPosition.x < 0.0f | vibrate)
+            //{
                 highlighter.transform.position = worldPosition;
 
                 int wave_index = Mathf.RoundToInt(waveSlider.value);
@@ -96,10 +103,9 @@ public class Tap_Tor : MonoBehaviour
                 {
                     audio_vib_1.Play();
                 }
-            }
+            //}
 
-
-
+            vibrate = false; 
         }
     }
 

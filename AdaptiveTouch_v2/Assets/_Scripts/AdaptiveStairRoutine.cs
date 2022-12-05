@@ -170,6 +170,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
     private int[] correctInARow_30 = new int[2] { 0, 0 };
     private int[] correctInARow_300 = new int[2] { 0, 0 };
 
+    public bool firstResponse, secondResponse, confirm; 
+
     #endregion
 
     void Start()
@@ -321,6 +323,30 @@ public class AdaptiveStairRoutine : MonoBehaviour
     //}
     #endregion
 
+    public void ResponseFunction(int res)
+    {
+        if (res == 0)
+            firstResponse = true;
+        else if (res == 1)
+            secondResponse = true;
+
+        Invoke("ResetResponse", 0.5f);
+    }
+    public void ConfirmFunction()
+    {
+        confirm = true;
+        Invoke("ResetConfirm", 0.5f);
+    }
+    void ResetConfirm()
+    {
+        confirm = false; 
+    }
+    void ResetResponse()
+    {
+        firstResponse = false;
+        secondResponse = false;
+    }
+
     IEnumerator ExperimentSequenceFreq2()
     {
         // Roberta suggestion (3) Breaktime forced at 2.5 minute mark 
@@ -354,7 +380,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
             if (StimSequence[i] == 0) // Standard first then comparison stimulus 
             {
-                Debug.Log("Stim first i.e. press A for correct, Freq: " + comparisonFrequency.ToString());
+                //Debug.Log("Stim first i.e. press A for correct, Freq: " + comparisonFrequency.ToString());
 
                 // Comparison
                 instructionDisplay.text = "1st stimulus";
@@ -374,7 +400,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
             else if (StimSequence[i] == 1) // Comparison stimulus first then standard 
             {
-                Debug.Log("Comparison first i.e. press D for correct, Freq: " + comparisonFrequency.ToString());
+                //Debug.Log("Comparison first i.e. press D for correct, Freq: " + comparisonFrequency.ToString());
 
                 // Standard
                 instructionDisplay.text = "1st stimulus";
@@ -401,14 +427,16 @@ public class AdaptiveStairRoutine : MonoBehaviour
             float allowedResponseTime = 5f; 
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKeyDown(KeyCode.A) | firstResponse)
                 {
                     answer = 0;
+                    firstResponse = false; 
                     break;
                 }
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.D) | secondResponse)
                 {
                     answer = 1;
+                    secondResponse = false; 
                     break;
                 }
                 // Roberta suggestion (5) Repeat trial if ppts failes to respond within 5 seconds 
@@ -430,7 +458,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 //done30 = true;
 
                 comFreq[0] = comparisonFrequency;
-                Debug.Log("Corr Row 30: " + correctInARow_30[0] + " : " + correctInARow_30[1]);
+                //Debug.Log("Corr Row 30: " + correctInARow_30[0] + " : " + correctInARow_30[1]);
             }
             if (FreqOrder[i] == 1) // 300 Hz
             {
@@ -441,7 +469,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 //done300 = true;
 
                 comFreq[1] = comparisonFrequency;
-                Debug.Log("Corr Row 300: " + correctInARow_300[0] + " : " + correctInARow_300[1]);
+                //Debug.Log("Corr Row 300: " + correctInARow_300[0] + " : " + correctInARow_300[1]);
             }
 
             // Record data 
@@ -458,8 +486,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             while (true)
             {
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) | confirm)
+                {
+                    confirm = false;
                     break;
+                }
                 yield return null;
             }
 
@@ -876,8 +907,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
         instructionDisplay.text = "Thaks for taking part in ATTS \n Please follow these instructions to complete this experiment \n \n Press the 'S' key to continue!";
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) | confirm)
+            {
+                confirm = false; 
                 break;
+            }
             yield return null;
         }
 
@@ -886,8 +920,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
         instructionDisplay.text = "You will receive a pair of stimuli seperated by a 1 second pause, then answer the displayed question. \n \n Press the 'S' key to continue!";
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) | confirm)
+            {
+                confirm = false;
                 break;
+            }
             yield return null;
         }
 
@@ -896,8 +933,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
         instructionDisplay.text = "This process repeats until the experiment comes to an end. \n \n Press the 'S' key to start this experiment!";
         while (true)
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) | confirm)
             {
+                confirm = false;
                 break;
             }
             yield return null;
