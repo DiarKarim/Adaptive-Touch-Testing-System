@@ -170,7 +170,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
     private int[] correctInARow_30 = new int[2] { 0, 0 };
     private int[] correctInARow_300 = new int[2] { 0, 0 };
 
-    public bool firstResponse, secondResponse, confirm; 
+    public bool firstResponse, secondResponse, confirm, endNsave; 
 
     #endregion
 
@@ -345,6 +345,19 @@ public class AdaptiveStairRoutine : MonoBehaviour
     {
         firstResponse = false;
         secondResponse = false;
+    }
+
+    public void End_Save()
+    {
+        StartCoroutine(Upload2(participantID + "_standard_" + standardFrequency + "comparisonFrequency" + comparisonFrequency + "_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + numbTrials.ToString() + "_.json"));
+        instructionDisplay.text = "End \n\nThanks for your participation";
+        endNsave = true;
+        Invoke("ResetEndSave", 2f);
+    }
+    void ResetEndSave()
+    {
+        Application.Quit();
+        endNsave = false;
     }
 
     IEnumerator ExperimentSequenceFreq2()

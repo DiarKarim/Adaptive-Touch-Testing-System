@@ -337,7 +337,7 @@ public class AdaptiveStaircase : MonoBehaviour
         if (trialNum >= numTrials) //(stair_1N.reversalCounter == endAfterReversal || trialNum == (numTrials / 2))
         {
             Debug.Log("*** Experiment ended after set number of trials: " + trialNum.ToString());
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
         //if (stair_5N.reversalCounter == endAfterReversal || trialNum == numTrials / 2)
         //{
@@ -348,7 +348,8 @@ public class AdaptiveStaircase : MonoBehaviour
         if (trialNum == numTrials - 1)
         {
             Debug.Log("*** Experiment Ended. Thank you :) ***");
-            UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 

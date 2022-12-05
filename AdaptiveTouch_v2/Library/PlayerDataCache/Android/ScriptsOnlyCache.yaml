@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AdaptiveStairRoutine
     - BouncyBall
     - ChangeValue
     - LibraryButton
@@ -8,6 +9,8 @@ ScriptsOnlyBuild:
     - Tap_Tor
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
+    - UnityEditor.Tilemaps.GridPaletteBrushes
+    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -31,8 +34,10 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
-    Assets/Demo/Demo.unity:
+    Assets/_Scenes/main_v2.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -70,41 +75,47 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11882}
+      Script: {instanceID: 11866}
     - Class: 114
-      Script: {instanceID: 12148}
+      Script: {instanceID: 11890}
     - Class: 114
-      Script: {instanceID: 12304}
+      Script: {instanceID: 12158}
     - Class: 114
-      Script: {instanceID: 12358}
+      Script: {instanceID: 12314}
     - Class: 114
-      Script: {instanceID: 12712}
+      Script: {instanceID: 12368}
     - Class: 114
-      Script: {instanceID: 12746}
+      Script: {instanceID: 12722}
     - Class: 114
-      Script: {instanceID: 13328}
+      Script: {instanceID: 12758}
     - Class: 114
-      Script: {instanceID: 13620}
+      Script: {instanceID: 13344}
     - Class: 114
-      Script: {instanceID: 13638}
+      Script: {instanceID: 13636}
     - Class: 114
-      Script: {instanceID: 13910}
+      Script: {instanceID: 13654}
     - Class: 114
-      Script: {instanceID: 13916}
+      Script: {instanceID: 13762}
     - Class: 114
-      Script: {instanceID: 14002}
+      Script: {instanceID: 13930}
     - Class: 114
-      Script: {instanceID: 14074}
+      Script: {instanceID: 13936}
     - Class: 114
-      Script: {instanceID: 14240}
+      Script: {instanceID: 14022}
     - Class: 114
-      Script: {instanceID: 14366}
+      Script: {instanceID: 14094}
     - Class: 114
-      Script: {instanceID: 14406}
+      Script: {instanceID: 14260}
     - Class: 114
-      Script: {instanceID: 14498}
+      Script: {instanceID: 14386}
+    - Class: 114
+      Script: {instanceID: 14426}
+    - Class: 114
+      Script: {instanceID: 14518}
     - Class: 114
       Script: {instanceID: 14538}
+    - Class: 114
+      Script: {instanceID: 14558}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -118,6 +129,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -354,6 +367,12 @@ ScriptsOnlyBuild:
     className: EventSystem
   - hash:
       serializedVersion: 2
+      Hash: 53974df1324c433a3d2d3f712de30e33
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AdaptiveStaircase
+  - hash:
+      serializedVersion: 2
       Hash: 0fb27be807aa299702f28ad0bcad1f46
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -406,6 +425,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UDP_Messenger
   - hash:
       serializedVersion: 2
       Hash: 3375c3d749f8f4cad889721b431bdc27
@@ -564,6 +589,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: b5b6675c1d6f4b05e2d60e2ce84c518d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AdaptiveStairRoutine
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -654,7 +685,7 @@ ScriptsOnlyBuild:
     className: TextMeshSpawner
   - hash:
       serializedVersion: 2
-      Hash: f488916bea6fe898d501bcb65a23e7ac
+      Hash: db5ebc4dd9d538f13e33f8f50c9ee567
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Tap_Tor
@@ -840,5 +871,5 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 13
   scenePathNames:
-  - Assets/Demo/Demo.unity
-  playerPath: C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/Atts_v05.apk
+  - Assets/_Scenes/main_v2.unity
+  playerPath: C:/Users/Monter/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/AdaptTouch_v1_Android/adaptouch.apk
