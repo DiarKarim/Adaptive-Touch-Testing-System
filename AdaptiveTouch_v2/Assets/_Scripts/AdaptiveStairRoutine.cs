@@ -99,6 +99,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
     private bool endReversals;
 
     public string participantID = "";
+    public TMP_InputField studyInfo;
 
     private DataClass expTrialData = new DataClass();
     public Transform TrackedObjects;
@@ -358,6 +359,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
     {
         Application.Quit();
         endNsave = false;
+    }
+
+    public void ConfirmInfo()
+    {
+        participantID = studyInfo.text;
     }
 
     IEnumerator ExperimentSequenceFreq2()
