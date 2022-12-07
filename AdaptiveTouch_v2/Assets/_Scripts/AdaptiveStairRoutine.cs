@@ -100,6 +100,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     public string participantID = "";
     public TMP_InputField studyInfo;
+    public TMP_InputField pathField;
 
     private DataClass expTrialData = new DataClass();
     public Transform TrackedObjects;
@@ -174,10 +175,10 @@ public class AdaptiveStairRoutine : MonoBehaviour
     public bool firstResponse, secondResponse, confirm, endNsave; 
 
     #endregion
-
+     
     void Start()
     {
-        path = Application.persistentDataPath;
+        //path = Application.persistentDataPath; 
         pathDisplay.text = path; 
 
         numbTrials = maxNumbTrials;
@@ -364,6 +365,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
     public void ConfirmInfo()
     {
         participantID = studyInfo.text;
+
+        //if (string.IsNullOrEmpty(pathField.text))
+        //    path = Application.persistentDataPath;
+        //else
+        path = pathField.text;
     }
 
     IEnumerator ExperimentSequenceFreq2()
