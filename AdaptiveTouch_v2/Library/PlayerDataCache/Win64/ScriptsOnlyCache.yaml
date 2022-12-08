@@ -881,4 +881,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/_Scenes/main_v2.unity
-  playerPath: C:/Users/symonlab_2/Documents/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/AdaptTouch_v14_Windows/AdaptTouch.exe
+  playerPath: C:/Users/Monter/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/AdaptTouch_v15_Windows/AdaptTouch.exe
