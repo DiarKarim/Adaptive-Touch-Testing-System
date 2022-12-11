@@ -1,0 +1,4 @@
+#Sat Dec 10 14:58:22 GMT 2022
+base.0=C\:\\Users\\Diar\\Projects\\Adaptive-Touch-Testing-System\\AdaptiveTouch_v2\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\launcher\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

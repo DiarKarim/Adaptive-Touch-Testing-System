@@ -182,6 +182,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     #endregion
 
+    void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         //path = Application.persistentDataPath; 
@@ -548,7 +553,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             }
             catch
             {
-                Debug.Log("Index out of range exception!!!");
+                //Debug.Log("Index out of range exception!!!");
             }
 
             // Record data 
@@ -602,14 +607,14 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         trial = trial + 4; // Add 4 to avoid crash at the start when trial is 0 (zero) 
 
-        Debug.Log("Answer: " + "StimPos: " + stimulus_position + " Answer: " + answer + " ComparisonFreq: " + compStim);
+        //Debug.Log("Answer: " + "StimPos: " + stimulus_position + " Answer: " + answer + " ComparisonFreq: " + compStim);
 
         #region Check Answer
         if (answer == stimulus_position & correctcounter_30 == 0)
         {
             correctcounter_30 += 1;
             correctCntHist[trial] = 1;
-            Debug.Log("Correct");
+            //Debug.Log("Correct");
             checkedAnswer = "Correct";
 
             correctInARow_30[0] = 1;
@@ -622,7 +627,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             correctCntHist[trial] = 1;
             //nextStimulus -= stepSize;
             correctcounter_30 = 0;
-            Debug.Log("Correct");
+            //Debug.Log("Correct");
             checkedAnswer = "Correct";
 
             correctInARow_30[1] = 1;
@@ -635,7 +640,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             //nextStimulus += stepSize;
             correctcounter_30 = 0;
             correctCntHist[trial] = 0;
-            Debug.Log("Wrong");
+            //Debug.Log("Wrong");
             checkedAnswer = "Wrong";
 
             // Reset correct in a row counter when one wrong 
@@ -792,14 +797,14 @@ public class AdaptiveStairRoutine : MonoBehaviour
         float nextStimulus = 0f;
         trial = trial + 4; // Add 4 to avoid crash at the start when trial is 0 (zero) 
 
-        Debug.Log("Answer: " + "StimPos: " + stimulus_position + " Answer: " + answer + " ComparisonFreq: " + compStim);
+        //Debug.Log("Answer: " + "StimPos: " + stimulus_position + " Answer: " + answer + " ComparisonFreq: " + compStim);
 
         #region Check Answer
         if (answer == stimulus_position & correctcounter_300 == 0)
         {
             correctcounter_300 += 1;
             correctCntHist[trial] = 1;
-            Debug.Log("Correct");
+            //Debug.Log("Correct");
             checkedAnswer = "Correct";
 
             correctInARow_300[0] = 1;
@@ -812,7 +817,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             correctCntHist[trial] = 1;
             //nextStimulus -= stepSize;
             correctcounter_300 = 0;
-            Debug.Log("Correct");
+            //Debug.Log("Correct");
             checkedAnswer = "Correct";
 
             correctInARow_300[1] = 1;
@@ -825,7 +830,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             //nextStimulus += stepSize;
             correctcounter_300 = 0;
             correctCntHist[trial] = 0;
-            Debug.Log("Wrong");
+            //Debug.Log("Wrong");
             checkedAnswer = "Wrong";
 
             // Reset correct in a row counter when one wrong 
@@ -1518,7 +1523,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return null;
             }
 
-            Debug.Log("User Resp: " + answer + " Stimulus: " + StimSequence[i] + " Amp: " + amp + " Freq: " + FreqOrder[i]);
+            //Debug.Log("User Resp: " + answer + " Stimulus: " + StimSequence[i] + " Amp: " + amp + " Freq: " + FreqOrder[i]);
 
             yield return new WaitForSeconds(0.1f);
             instructionDisplay.text = "Press S to continue";
@@ -1551,19 +1556,19 @@ public class AdaptiveStairRoutine : MonoBehaviour
         if (answer == stimulus_position & correctcounter == 0)
         {
             correctcounter++;
-            Debug.Log("Correct");
+            //Debug.Log("Correct");
         }
         else if (answer == stimulus_position & correctcounter == 1)
         {
             nextStimulus -= stepSize;
             correctcounter = 0;
-            Debug.Log("Correct");
+            //Debug.Log("Correct");
         }
         else
         {
             nextStimulus += stepSize;
             correctcounter = 0;
-            Debug.Log("Wrong");
+            //Debug.Log("Wrong");
         }
         // if answer if correct twice then update the stimulus intensity
 
