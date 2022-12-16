@@ -1,0 +1,36 @@
+<dependencies>
+  <packages>
+    <package>com.google.android.gms:play-services-base:18.1.0</package>
+    <package>com.google.firebase:firebase-analytics:21.2.0</package>
+    <package>com.google.firebase:firebase-analytics-unity:10.2.0</package>
+    <package>com.google.firebase:firebase-app-unity:10.2.0</package>
+    <package>com.google.firebase:firebase-auth:21.1.0</package>
+    <package>com.google.firebase:firebase-auth-unity:10.2.0</package>
+    <package>com.google.firebase:firebase-common:20.2.0</package>
+    <package>com.google.firebase:firebase-config:21.2.0</package>
+    <package>com.google.firebase:firebase-config-unity:10.2.0</package>
+    <package>com.google.firebase:firebase-dynamic-links:21.1.0</package>
+    <package>com.google.firebase:firebase-dynamic-links-unity:10.2.0</package>
+    <package>com.google.firebase:firebase-iid:21.1.0</package>
+    <package>com.google.firebase:firebase-messaging:23.1.0</package>
+    <package>com.google.firebase:firebase-messaging-unity:10.2.0</package>
+    <package>com.google.firebase:firebase-storage:20.1.0</package>
+    <package>com.google.firebase:firebase-storage-unity:10.2.0</package>
+  </packages>
+  <files />
+  <settings>
+    <setting name="androidAbis" value="armeabi-v7a" />
+    <setting name="bundleId" value="com.obirobotics.atts" />
+    <setting name="explodeAars" value="True" />
+    <setting name="gradleBuildEnabled" value="True" />
+    <setting name="gradlePropertiesTemplateEnabled" value="False" />
+    <setting name="gradleTemplateEnabled" value="False" />
+    <setting name="installAndroidPackages" value="True" />
+    <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />
+    <setting name="packageDir" value="Assets/Plugins/Android" />
+    <setting name="patchAndroidManifest" value="True" />
+    <setting name="patchMainTemplateGradle" value="True" />
+    <setting name="projectExportEnabled" value="False" />
+    <setting name="useJetifier" value="True" />
+  </settings>
+</dependencies>
