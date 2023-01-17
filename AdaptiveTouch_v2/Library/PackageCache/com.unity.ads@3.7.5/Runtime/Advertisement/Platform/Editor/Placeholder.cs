@@ -81,7 +81,7 @@ namespace UnityEngine.Advertisements
                 HideSkipButton(m_PortraitCanvas);
             }
 
-            if (m_CurrentScreenOrientation == ScreenOrientation.Landscape)
+            if (m_CurrentScreenOrientation == ScreenOrientation.LandscapeLeft)
             {
                 m_LandscapeCanvas.SetActive(true);
             }

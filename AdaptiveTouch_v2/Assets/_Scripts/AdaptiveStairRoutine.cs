@@ -218,7 +218,15 @@ public class AdaptiveStairRoutine : MonoBehaviour
         string jsonString = JsonConvert.SerializeObject(expTrialData, Formatting.Indented);
 
         // Save jsonString variable in a file 
-        File.WriteAllText(path + "/" + trialName, jsonString);
+        try
+        {
+            File.WriteAllText(path + "/" + trialName, jsonString);
+        }
+        catch
+        {
+            trialName = UnityEngine.Time.time.ToString("F2") + "_.json";
+            File.WriteAllText(path + "/" + trialName, jsonString);
+        }
         yield return new WaitForSecondsRealtime(0.5f);
 
         // Empty text fields for next trials (potential for issues with next trial)
@@ -374,32 +382,22 @@ public class AdaptiveStairRoutine : MonoBehaviour
             if (FreqOrder[i] == 0)
             {
                 standardFrequency = 30;
-                //if (done30)
-                //{
-                    comparisonFrequency = comFreq[0];
-                //    done30 = false; 
-                //}
+                comparisonFrequency = comFreq[0];
             }
             else
             {
                 standardFrequency = 300;
-                //if (done300)
-                //{
-                    comparisonFrequency = comFreq[1];
-                //    done300 = false; 
-                //}
+                comparisonFrequency = comFreq[1];
             }
 
             if (StimSequence[i] == 0) // Standard first then comparison stimulus 
             {
-                //Debug.Log("Stim first i.e. press A for correct, Freq: " + comparisonFrequency.ToString());
-
                 // Comparison
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
                 float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand1 * 1.5f;
+                amplitude = ampRand1 + 2f;
                 frequency = comparisonFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
@@ -409,21 +407,19 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
                 amp = MapFreq2Amp(standardFrequency);// 3.5f; // Random.Range(0.05f, 0.95f);
                 float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand2 * 1.5f;
+                amplitude = ampRand2 + 2f;
                 frequency = standardFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
             }
             else if (StimSequence[i] == 1) // Comparison stimulus first then standard 
             {
-                //Debug.Log("Comparison first i.e. press D for correct, Freq: " + comparisonFrequency.ToString());
-
                 // Standard
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = MapFreq2Amp(standardFrequency); // Random.Range(0.05f, 0.95f);
                 float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand1 * 1.5f;
+                amplitude = ampRand1 + 2f;
                 frequency = standardFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
@@ -433,14 +429,13 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
                 amp = MapFreq2Amp(comparisonFrequency); // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
                 float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand2 * 1.5f;
+                amplitude = ampRand2 + 2f;
                 frequency = comparisonFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
             }
             
             instructionDisplay.text = "Which of the two stimuli had a higher frequency? \n\nPress A for 1st and D for 2nd";
-            //yield return new WaitForSeconds(0.1f);
 
             // User response choice 
             float startResponseTimer = UnityEngine.Time.time;
@@ -477,10 +472,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     next_stimulus = CheckAnswerUpdateStimulus_30(StimSequence[i], answer, i, comparisonFrequency);
                     comparisonFrequency = comFreq[0] + next_stimulus;
                     comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
-                    //done30 = true;
 
                     comFreq[0] = comparisonFrequency;
-                    //Debug.Log("Corr Row 30: " + correctInARow_30[0] + " : " + correctInARow_30[1]);
                 }
                 if (FreqOrder[i] == 1) // 300 Hz
                 {
@@ -491,7 +484,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
                     //done300 = true;
 
                     comFreq[1] = comparisonFrequency;
-                    //Debug.Log("Corr Row 300: " + correctInARow_300[0] + " : " + correctInARow_300[1]);
                 }
             }
             catch
