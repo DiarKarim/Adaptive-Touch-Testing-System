@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "314452392986",
+    "project_id": "atts-project",
+    "storage_bucket": "atts-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314452392986:android:191aaab951ad94a06a25a3",
+        "android_client_info": {
+          "package_name": "com.obirobotics.atts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314452392986-evp2e99vc3rfua4ef0ihjjt7ft88auvp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMowjR36aghh8ePe_STvf89vSIPyLG6G0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314452392986-evp2e99vc3rfua4ef0ihjjt7ft88auvp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

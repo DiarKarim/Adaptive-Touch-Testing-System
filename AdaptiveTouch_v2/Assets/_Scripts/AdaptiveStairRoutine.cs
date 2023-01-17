@@ -9,64 +9,6 @@ using System.Linq;
 using Newtonsoft.Json;
 using System.Threading; 
 
-public class StairCase
-{
-    // Variables
-    int[] trialSequence;
-    string path;
-    public int[] StimSequence;
-
-    // Init
-    public StairCase(string pathin, int numTrials)
-    {
-        path = pathin;
-        StimSequence = new int[numTrials];
-        StimSequence = CreateStimSequeces(StimSequence, 2);
-        Shuffle(StimSequence);
-    }
-
-
-    // Create Trial Stimulus Sequence
-    public int[] CreateStimSequeces(int[] stimseqs, int repeteVal)
-    {
-        int countr = 0;
-        for (int i = 0; i < stimseqs.Length; i++)
-        {
-            stimseqs[i] = countr;
-            countr++;
-
-            if (countr > repeteVal)
-            {
-                countr = 0;
-            }
-        }
-        return stimseqs;
-    }
-
-    // Save files
-    public void SaveFile()
-    {
-        File.AppendAllText(path, trialSequence.ToArray().ToString() + " \n");
-    }
-
-    // Load files
-
-
-    // Shuffle Randomizer
-    static System.Random _random = new System.Random();
-    public static void Shuffle<T>(T[] array)
-    {
-        int n = array.Length;
-        for (int i = 0; i < (n - 1); i++)
-        {
-            int r = i + _random.Next(n - i);
-            T t = array[r];
-            array[r] = array[i];
-            array[i] = t;
-        }
-    }
-}
-
 public class DataClass
 {
     public List<int> user_response = new List<int>();
@@ -180,6 +122,10 @@ public class AdaptiveStairRoutine : MonoBehaviour
     private float frequency, amplitude;
     AudioSource aud;
 
+
+    // Data saving (lost previous verison due to github issues)
+    string trialName = "";
+
     #endregion
 
     void Awake()
@@ -189,8 +135,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     void Start()
     {
-        //path = Application.persistentDataPath; 
-        pathDisplay.text = path; 
+        path = Application.persistentDataPath;
+        pathDisplay.text = path;
+        pathField.text = path; 
 
         numbTrials = maxNumbTrials;
 
@@ -362,7 +309,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     public void End_Save()
     {
-        StartCoroutine(Upload2(participantID + "_standard_" + standardFrequency + "comparisonFrequency" + comparisonFrequency + "_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + numbTrials.ToString() + "_.json"));
+        StartCoroutine(Upload2(trialName));
         instructionDisplay.text = "End \n\nThanks for your participation";
         endNsave = true;
         Invoke("ResetEndSave", 2f);
@@ -380,7 +327,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
         //if (string.IsNullOrEmpty(pathField.text))
         //    path = Application.persistentDataPath;
         //else
-        path = pathField.text;
+        pathField.text = path;
     }
 
     public void PlayAudio(float dur)
@@ -450,10 +397,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Comparison
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
-                float amp = 2f; // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                //Signal collision2 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
-                //syntacts.session.Play(collisionChannel, collision2);
-                amplitude = amp;
+                float amp = MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
+                amplitude = ampRand1 * 1.5f;
                 frequency = comparisonFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
@@ -461,10 +407,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Standard
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
-                amp = 3.5f; // Random.Range(0.05f, 0.95f);
-                //Signal collision1 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
-                //syntacts.session.Play(collisionChannel, collision1);
-                amplitude = amp;
+                amp = MapFreq2Amp(standardFrequency);// 3.5f; // Random.Range(0.05f, 0.95f);
+                float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
+                amplitude = ampRand2 * 1.5f;
                 frequency = standardFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
@@ -476,10 +421,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Standard
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
-                float amp = 3.5f; // Random.Range(0.05f, 0.95f);
-                //Signal collision1 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
-                //syntacts.session.Play(collisionChannel, collision1);
-                amplitude = amp;
+                float amp = MapFreq2Amp(standardFrequency); // Random.Range(0.05f, 0.95f);
+                float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
+                amplitude = ampRand1 * 1.5f;
                 frequency = standardFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
@@ -487,10 +431,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Comparison
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
-                amp = 2f; // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                //Signal collision2 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
-                //syntacts.session.Play(collisionChannel, collision2);
-                amplitude = amp;
+                amp = MapFreq2Amp(comparisonFrequency); // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
+                amplitude = ampRand2 * 1.5f;
                 frequency = comparisonFrequency;
                 PlayAudio(0.08f);
                 yield return new WaitForSeconds(1f);
@@ -594,11 +537,53 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 break; 
         }
 
-        StartCoroutine(Upload2(participantID + "_standard_" + standardFrequency + "comparisonFrequency" + comparisonFrequency + "_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + numbTrials.ToString() + "_.json"));
+        trialName = participantID + "_standard_" + standardFrequency + "comparisonFrequency" + comparisonFrequency + "_" + UnityEngine.Time.time.ToString("F2") + "_Trial_" + numbTrials.ToString() + "_.json";
+        StartCoroutine(Upload2(trialName));
 
         instructionDisplay.text = "End \n\nThanks for your participation";
         yield return null;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Check Answers 30 freq 
     public float CheckAnswerUpdateStimulus_30(int stimulus_position, int answer, int trial, float compStim)
@@ -1134,17 +1119,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     //**************************************************************************************
     //************************************ Old codes ***************************************
     //**************************************************************************************
@@ -1470,6 +1444,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
             // Select which stimulus amplitude first (standard(reference) or stimulus amplitude first? 
             if (StimSequence[i] == 0)
             {
+
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.5f);
                 Signal collision1 = new Sine(50);
@@ -1581,7 +1556,63 @@ public class AdaptiveStairRoutine : MonoBehaviour
 }
 
 
+//public class StairCase
+//{
+//    // Variables
+//    int[] trialSequence;
+//    string path;
+//    public int[] StimSequence;
 
+//    // Init
+//    public StairCase(string pathin, int numTrials)
+//    {
+//        path = pathin;
+//        StimSequence = new int[numTrials];
+//        StimSequence = CreateStimSequeces(StimSequence, 2);
+//        Shuffle(StimSequence);
+//    }
+
+
+//    // Create Trial Stimulus Sequence
+//    public int[] CreateStimSequeces(int[] stimseqs, int repeteVal)
+//    {
+//        int countr = 0;
+//        for (int i = 0; i < stimseqs.Length; i++)
+//        {
+//            stimseqs[i] = countr;
+//            countr++;
+
+//            if (countr > repeteVal)
+//            {
+//                countr = 0;
+//            }
+//        }
+//        return stimseqs;
+//    }
+
+//    // Save files
+//    public void SaveFile()
+//    {
+//        File.AppendAllText(path, trialSequence.ToArray().ToString() + " \n");
+//    }
+
+//    // Load files
+
+
+//    // Shuffle Randomizer
+//    static System.Random _random = new System.Random();
+//    public static void Shuffle<T>(T[] array)
+//    {
+//        int n = array.Length;
+//        for (int i = 0; i < (n - 1); i++)
+//        {
+//            int r = i + _random.Next(n - i);
+//            T t = array[r];
+//            array[r] = array[i];
+//            array[i] = t;
+//        }
+//    }
+//}
 //else if (StimSequence[i] == 1)
 //{
 //    standard_frequency = frequencies[0];
