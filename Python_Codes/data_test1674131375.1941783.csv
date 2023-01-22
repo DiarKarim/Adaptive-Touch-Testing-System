@@ -1,0 +1,13 @@
+,user_response,trialNumber,first_second_staircase,standard_stim,comparison_stim,standard_freq,comp_freq,correct
+0,1,0,0,1,50,30,50,Correct
+1,1,1,0,1,40,30,40,Correct
+2,0,2,1,0,40,30,40,Correct
+3,1,3,0,0,47,30,47,Wrong
+4,0,4,1,0,37,30,37,Correct
+5,1,5,1,0,47,30,47,Wrong
+6,1,6,0,1,47,30,47,Correct
+7,1,7,0,1,40,30,40,Correct
+8,0,8,1,0,40,30,40,Correct
+9,1,9,1,1,30,30,30,Correct
+10,0,10,0,0,30,30,30,Correct
+11,0,10,1,0,30,30,30,Correct
