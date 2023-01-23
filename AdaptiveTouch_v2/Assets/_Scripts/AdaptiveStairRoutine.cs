@@ -61,35 +61,65 @@ public class StairCaseClass
     }
 
     // Functions
-    public float CheckAnswerUpdateStimulus(int stimulus_position, int answer, int trial, float compStim)
+    public float CheckAnswerUpdateStimulus(int stimulus_position, int answer, int trial, float compStim, float standardStim)
     {
         float nextStimulus = 0f;
         trial = trial + 4; // Add 4 to avoid crash at the start when trial is 0 (zero) 
 
         #region Check Answer
-        if (answer == stimulus_position & correctcounter == 0)
+        if (compStim > standardStim)
         {
-            correctcounter += 1;
-            correctCntHist[trial] = 1;
-            checkedAnswer = "Correct";
-            correctInARow[0] = 1;
-        }
-        else if (answer == stimulus_position & correctcounter == 1)
-        {
-            correctCntHist[trial] = 1;
-            correctcounter = 0;
-            checkedAnswer = "Correct";
-            correctInARow[1] = 1;
-        }
-        else
-        {
-            correctcounter= 0;
-            correctCntHist[trial] = 0;
-            checkedAnswer = "Wrong";
+            if (answer == stimulus_position & correctcounter == 0)
+            {
+                correctcounter += 1;
+                correctCntHist[trial] = 1;
+                checkedAnswer = "Correct";
+                correctInARow[0] = 1;
+            }
+            else if (answer == stimulus_position & correctcounter == 1)
+            {
+                correctCntHist[trial] = 1;
+                correctcounter = 0;
+                checkedAnswer = "Correct";
+                correctInARow[1] = 1;
+            }
+            else
+            {
+                correctcounter = 0;
+                correctCntHist[trial] = 0;
+                checkedAnswer = "Wrong";
 
-            // Reset correct in a row counter when one wrong 
-            correctInARow[0] = 0;
-            correctInARow[1] = 0;
+                // Reset correct in a row counter when one wrong 
+                correctInARow[0] = 0;
+                correctInARow[1] = 0;
+            }
+        }
+        else if (compStim < standardStim)
+        {
+            if (answer != stimulus_position & correctcounter == 0)
+            {
+                correctcounter += 1;
+                correctCntHist[trial] = 1;
+                checkedAnswer = "Correct";
+                correctInARow[0] = 1;
+            }
+            else if (answer != stimulus_position & correctcounter == 1)
+            {
+                correctCntHist[trial] = 1;
+                correctcounter = 0;
+                checkedAnswer = "Correct";
+                correctInARow[1] = 1;
+            }
+            else
+            {
+                correctcounter = 0;
+                correctCntHist[trial] = 0;
+                checkedAnswer = "Wrong";
+
+                // Reset correct in a row counter when one wrong 
+                correctInARow[0] = 0;
+                correctInARow[1] = 0;
+            }
         }
         #endregion
 
@@ -1029,9 +1059,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
             {
                 // Check answer and update stimulus
                 if (stairCaseID == 0)
-                    next_stimulus = stimUpdater_30_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                    next_stimulus = stimUpdater_30_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency);
                 else
-                    next_stimulus = stimUpdater_30_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                    next_stimulus = stimUpdater_30_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency);
 
                 comparisonFrequency = comFreq[0] + next_stimulus;
                 comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
@@ -1202,9 +1232,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
             {
                 // Check answer and update stimulus
                 if(stairCaseID == 0)
-                    next_stimulus = stimUpdater_300_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency); 
+                    next_stimulus = stimUpdater_300_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency); 
                 else
-                    next_stimulus = stimUpdater_300_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                    next_stimulus = stimUpdater_300_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency);
 
                 comparisonFrequency = comFreq[1] + next_stimulus;
                 comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
