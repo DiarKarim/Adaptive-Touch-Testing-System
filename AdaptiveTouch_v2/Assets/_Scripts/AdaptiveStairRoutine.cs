@@ -61,35 +61,65 @@ public class StairCaseClass
     }
 
     // Functions
-    public float CheckAnswerUpdateStimulus(int stimulus_position, int answer, int trial, float compStim)
+    public float CheckAnswerUpdateStimulus(int stimulus_position, int answer, int trial, float compStim, float standardStim)
     {
         float nextStimulus = 0f;
         trial = trial + 4; // Add 4 to avoid crash at the start when trial is 0 (zero) 
 
         #region Check Answer
-        if (answer == stimulus_position & correctcounter == 0)
+        if (compStim > standardStim)
         {
-            correctcounter += 1;
-            correctCntHist[trial] = 1;
-            checkedAnswer = "Correct";
-            correctInARow[0] = 1;
-        }
-        else if (answer == stimulus_position & correctcounter == 1)
-        {
-            correctCntHist[trial] = 1;
-            correctcounter = 0;
-            checkedAnswer = "Correct";
-            correctInARow[1] = 1;
-        }
-        else
-        {
-            correctcounter= 0;
-            correctCntHist[trial] = 0;
-            checkedAnswer = "Wrong";
+            if (answer == stimulus_position & correctcounter == 0)
+            {
+                correctcounter += 1;
+                correctCntHist[trial] = 1;
+                checkedAnswer = "Correct";
+                correctInARow[0] = 1;
+            }
+            else if (answer == stimulus_position & correctcounter == 1)
+            {
+                correctCntHist[trial] = 1;
+                correctcounter = 0;
+                checkedAnswer = "Correct";
+                correctInARow[1] = 1;
+            }
+            else
+            {
+                correctcounter = 0;
+                correctCntHist[trial] = 0;
+                checkedAnswer = "Wrong";
 
-            // Reset correct in a row counter when one wrong 
-            correctInARow[0] = 0;
-            correctInARow[1] = 0;
+                // Reset correct in a row counter when one wrong 
+                correctInARow[0] = 0;
+                correctInARow[1] = 0;
+            }
+        }
+        else if(compStim < standardStim)
+        {
+            if (answer != stimulus_position & correctcounter == 0)
+            {
+                correctcounter += 1;
+                correctCntHist[trial] = 1;
+                checkedAnswer = "Correct";
+                correctInARow[0] = 1;
+            }
+            else if (answer != stimulus_position & correctcounter == 1)
+            {
+                correctCntHist[trial] = 1;
+                correctcounter = 0;
+                checkedAnswer = "Correct";
+                correctInARow[1] = 1;
+            }
+            else
+            {
+                correctcounter = 0;
+                correctCntHist[trial] = 0;
+                checkedAnswer = "Wrong";
+
+                // Reset correct in a row counter when one wrong 
+                correctInARow[0] = 0;
+                correctInARow[1] = 0;
+            }
         }
         #endregion
 
@@ -169,6 +199,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     public SyntactsHub syntacts;
     private int collisionChannel = 0;
+    private int soundChannel = 0;
 
     // Initial comparison freq.
     public float[] comFreq = new float[2] { 80f, 400f };
@@ -508,20 +539,18 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand1 + 1.5f;
-                frequency = comparisonFrequency;
-                PlayAudio(audioSources[0], "Stim_1a");
+                Signal sig_1 = new Sine(50);
+                sig_1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_1);
                 yield return new WaitForSeconds(1f);
 
                 // Standard
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
                 amp = MapFreq2Amp(standardFrequency);// 3.5f; // Random.Range(0.05f, 0.95f);
-                float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand2 + 1.5f;
-                frequency = standardFrequency;
-                PlayAudio(audioSources[1], "Stim_2a");
+                Signal sig_2 = new Sine(50);
+                sig_2 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_2);
                 yield return new WaitForSeconds(1f);
             }
             else if (StimSequence[i] == 1) // Comparison stimulus first then standard 
@@ -530,20 +559,18 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = MapFreq2Amp(standardFrequency); // Random.Range(0.05f, 0.95f);
-                float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand1 + 0.25f;
-                frequency = standardFrequency;
-                PlayAudio(audioSources[2], "Stim_1b");
+                Signal sig_3 = new Sine(50);
+                sig_3 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_3);
                 yield return new WaitForSeconds(1f);
 
                 // Comparison
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
                 amp = MapFreq2Amp(comparisonFrequency); // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand2 + 0.25f;
-                frequency = comparisonFrequency;
-                PlayAudio(audioSources[3], "Stim_2b");
+                Signal sig_4 = new Sine(50);
+                sig_4 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_4);
                 yield return new WaitForSeconds(1f);
             }
             
@@ -953,20 +980,18 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand1 + addedAmplification;
-                frequency = comparisonFrequency;
-                PlayAudio(audioSources[0], "Stim_1a");
+                Signal sig_1 = new Sine(50);
+                sig_1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_1);
                 yield return new WaitForSeconds(1f);
 
                 // Standard
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
                 amp = MapFreq2Amp(standardFrequency);// 3.5f; // Random.Range(0.05f, 0.95f);
-                float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand2 + addedAmplification;
-                frequency = standardFrequency;
-                PlayAudio(audioSources[1], "Stim_2a");
+                Signal sig_2 = new Sine(50);
+                sig_2 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_2);
                 yield return new WaitForSeconds(1f);
             }
             else if (StimSequence[i] == 1) // Comparison stimulus first then standard 
@@ -975,20 +1000,19 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = MapFreq2Amp(standardFrequency); // Random.Range(0.05f, 0.95f);
-                float ampRand1 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand1 + addedAmplification;
-                frequency = standardFrequency;
-                PlayAudio(audioSources[0], "Stim_1b");
+                Signal sig_3 = new Sine(50);
+                sig_3 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_3);
                 yield return new WaitForSeconds(1f);
 
                 // Comparison
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
                 amp = MapFreq2Amp(comparisonFrequency); // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
-                amplitude = ampRand2 + addedAmplification;
-                frequency = comparisonFrequency;
-                PlayAudio(audioSources[1], "Stim_2b");
+                //float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
+                Signal sig_4 = new Sine(50);
+                sig_4 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_4);
                 yield return new WaitForSeconds(1f);
             }
             #endregion
@@ -1029,9 +1053,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
             {
                 // Check answer and update stimulus
                 if (stairCaseID == 0)
-                    next_stimulus = stimUpdater_30_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                    next_stimulus = stimUpdater_30_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency);
                 else
-                    next_stimulus = stimUpdater_30_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                    next_stimulus = stimUpdater_30_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency);
 
                 comparisonFrequency = comFreq[0] + next_stimulus;
                 comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
@@ -1121,24 +1145,19 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = addedAmplification; // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                //amp = Random.Range(amp - (amp * 0.01f), amp + (amp * 0.01f));
-                amplitude = amp;
-                frequency = Mathf.RoundToInt(comparisonFrequency);
-                PlayAudio(audioSources[0], "Stim_1a");
+                Signal sig_1 = new Sine(50);
+                sig_1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_1);
                 yield return new WaitForSeconds(1f);
 
-                //Signal collision1 = new Sine(50);
-                //collision1 = new Sine(comparisonFrequency300) * new ASR(0.05, 0.075, 0.05) * amplitude;
-                //syntacts.session.Play(collisionChannel, collision1);
 
                 // Standard
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
                 amp = addedAmplification; // MapFreq2Amp(standardFrequency);// 3.5f; // Random.Range(0.05f, 0.95f);
-                //amp = Random.Range(amp - (amp * 0.01f), amp + (amp * 0.01f));
-                amplitude = amp;
-                frequency = Mathf.RoundToInt(standardFrequency);
-                PlayAudio(audioSources[1], "Stim_2a");
+                Signal sig_2 = new Sine(50);
+                sig_2 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_2);
                 yield return new WaitForSeconds(1f);
             }
             else if (StimSequence[i] == 1) // Comparison stimulus first then standard 
@@ -1147,20 +1166,18 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
                 float amp = addedAmplification; // MapFreq2Amp(standardFrequency); // Random.Range(0.05f, 0.95f);
-                //amp = Random.Range(amp - (amp * 0.01f), amp + (amp * 0.01f));
-                amplitude = amp;
-                frequency = Mathf.RoundToInt(standardFrequency);
-                PlayAudio(audioSources[2], "Stim_1b");
+                Signal sig_3 = new Sine(50);
+                sig_3 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_3);
                 yield return new WaitForSeconds(1f);
 
                 // Comparison
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
                 amp = addedAmplification; // MapFreq2Amp(comparisonFrequency); // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
-                //amp = Random.Range(amp - (amp * 0.01f), amp + (amp * 0.01f));
-                amplitude = amp;
-                frequency = Mathf.RoundToInt(comparisonFrequency);
-                PlayAudio(audioSources[3], "Stim_2b");
+                Signal sig_4 = new Sine(50);
+                sig_4 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
+                syntacts.session.Play(soundChannel, sig_4);
                 yield return new WaitForSeconds(1f);
             }
             Debug.Log("Comp Freq: " + comparisonFrequency);
@@ -1202,9 +1219,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
             {
                 // Check answer and update stimulus
                 if(stairCaseID == 0)
-                    next_stimulus = stimUpdater_300_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency); 
+                    next_stimulus = stimUpdater_300_stair_1.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency); 
                 else
-                    next_stimulus = stimUpdater_300_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency);
+                    next_stimulus = stimUpdater_300_stair_2.CheckAnswerUpdateStimulus(StimSequence[i], answer, i, comparisonFrequency, standardFrequency);
 
                 comparisonFrequency = comFreq[1] + next_stimulus;
                 comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
