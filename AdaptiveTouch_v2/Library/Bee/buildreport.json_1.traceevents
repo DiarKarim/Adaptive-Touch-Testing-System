@@ -1,0 +1,560 @@
+{ "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
+{ "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
+{ "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+{ "pid": 0, "tid": 1, "ts": 1674499933611575, "dur": 1822423, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499933611801, "dur": 17374, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499933629178, "dur": 32781, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499933661996, "dur": 248337, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499933910336, "dur": 1513077, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499935423415, "dur": 10583, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499935434712, "dur": 17, "ph": "X", "name": "", "args": {} },
+{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "netcorerun.dll" } },
+{ "pid": 35942, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-1" } },
+{ "pid": 35942, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
+{ "pid": 35942, "tid": 1, "ts": 1674499933768252, "dur": 118246, "ph": "X", "name": "BuildProgram", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1674499933769358, "dur": 48459, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1674499933868459, "dur": 5078, "ph": "X", "name": "OutputData.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1674499933873540, "dur": 12929, "ph": "X", "name": "Backend.Write", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1674499933874380, "dur": 11051, "ph": "X", "name": "JsonToString", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1674499933891575, "dur": 2052, "ph": "X", "name": "", "args": {} },
+{ "pid": 35942, "tid": 1, "ts": 1674499933890698, "dur": 2959, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499935434868, "dur": 293, "ph": "X", "name": "buildprogram0.traceevents", "args": {} },
+{ "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
+,{ "pid":12345, "tid":0, "ts":1674499933957151, "dur":2277, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499933959435, "dur":161, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1674499933959657, "dur":26, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1674499933959683, "dur":466, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1674499933960223, "dur":948, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499933961171, "dur":14, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410218, "dur":285, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410503, "dur":18, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410521, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410524, "dur":35, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410559, "dur":4, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410563, "dur":10, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410573, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410576, "dur":8, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410584, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410587, "dur":8, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410595, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410597, "dur":11, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410608, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410610, "dur":8, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410618, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410621, "dur":7, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410628, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410642, "dur":3, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935410714, "dur":2995, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1674499933960589, "dur":606, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499933961195, "dur":4926, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499933966121, "dur":151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1674499933966275, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499933977045, "dur":1476, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":1, "ts":1674499933978567, "dur":65, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499933978635, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499933979860, "dur":147790, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934127700, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934127763, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934127770, "dur":40028, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934167899, "dur":93, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934167996, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934168004, "dur":93664, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934261726, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934261804, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934261811, "dur":74641, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934336514, "dur":180, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934336698, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934336783, "dur":42144, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934378994, "dur":1524, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.AppleStub.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934380524, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934380533, "dur":1972, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.AppleStub.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934382558, "dur":1867, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.AppleMacosStub.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934384430, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934384440, "dur":1240, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.AppleMacosStub.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934385752, "dur":1035, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.AppleCore.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934386793, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934386801, "dur":1409, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.AppleCore.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934388279, "dur":77, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934388359, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934388400, "dur":32932, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934421390, "dur":62928, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Monetization.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934484322, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934484328, "dur":4440, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Monetization.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934488827, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934488885, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934488893, "dur":39813, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934528775, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934528843, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934528851, "dur":35205, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934564124, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934564202, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934564211, "dur":66698, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934630988, "dur":1080, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934632073, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934632083, "dur":1566, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934633720, "dur":37349, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934671076, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934671088, "dur":2404, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934673558, "dur":35451, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934709017, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934709031, "dur":4704, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934713807, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499934713877, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499934713885, "dur":317744, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499935031697, "dur":75, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499935031776, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1674499935031784, "dur":153625, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":1, "ts":1674499935185497, "dur":224701, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499933960843, "dur":417, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499933961262, "dur":4815, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499933966089, "dur":183, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":2, "ts":1674499933966276, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934073191, "dur":1595, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":2, "ts":1674499934074834, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934074904, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934074912, "dur":49114, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934124087, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934124154, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934124162, "dur":131480, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934255759, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934255821, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934255826, "dur":44313, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934300201, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934300261, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934300269, "dur":41758, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934342116, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934342182, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934342190, "dur":53844, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934396091, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934396147, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934396154, "dur":50494, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934446725, "dur":80, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934446809, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934446817, "dur":40117, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934487018, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934487087, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934487095, "dur":26481, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934513633, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934513686, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934513692, "dur":30027, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934543786, "dur":80, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934543900, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934543908, "dur":66123, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934610101, "dur":114531, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934724637, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934724646, "dur":1538, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934726248, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934726312, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934726321, "dur":124147, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934850578, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934850655, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934850664, "dur":138161, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934988892, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499934988959, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499934988968, "dur":155177, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499935144214, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Plugins/x86_64/syntacts_c.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499935144286, "dur":7, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935145085, "dur":12933, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Plugins/x86_64/syntacts_c.dll" }}
+,{ "pid":12345, "tid":2, "ts":1674499935158099, "dur":221, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":2, "ts":1674499935158324, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935158663, "dur":1265, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":2, "ts":1674499935159995, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/StreamingAssets/google-services-desktop.json" }}
+,{ "pid":12345, "tid":2, "ts":1674499935160065, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935160154, "dur":1336, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/StreamingAssets/google-services-desktop.json" }}
+,{ "pid":12345, "tid":2, "ts":1674499935161559, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":2, "ts":1674499935161626, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935161720, "dur":1712, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":2, "ts":1674499935163494, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":2, "ts":1674499935163560, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935163567, "dur":1411, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":2, "ts":1674499935165043, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1674499935165108, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935165115, "dur":4445, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":2, "ts":1674499935169629, "dur":1341, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":2, "ts":1674499935170974, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935170981, "dur":1316, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":2, "ts":1674499935172391, "dur":72, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/level0" }}
+,{ "pid":12345, "tid":2, "ts":1674499935172466, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935172475, "dur":1637, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/level0" }}
+,{ "pid":12345, "tid":2, "ts":1674499935174179, "dur":196, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1674499935174381, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1674499935174390, "dur":1400, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/boot.config" }}
+,{ "pid":12345, "tid":2, "ts":1674499935175849, "dur":234374, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499933960621, "dur":583, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499933961205, "dur":4876, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499933966089, "dur":164, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1674499933966258, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499933975157, "dur":1437, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1674499933976642, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1674499933976709, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499933976717, "dur":2855, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":3, "ts":1674499933979611, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":3, "ts":1674499933979666, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499933979670, "dur":112317, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":3, "ts":1674499934092101, "dur":721, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934092855, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934092864, "dur":59798, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934152733, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934152796, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934152803, "dur":51476, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934204407, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934204505, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934204514, "dur":63602, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934268176, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934268240, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934268248, "dur":28691, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934296995, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934297055, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934297062, "dur":49322, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934346443, "dur":86, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934346532, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934346540, "dur":25406, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934372006, "dur":1128, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934373141, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934373179, "dur":1350, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934374585, "dur":902, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.SecurityCore.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934375492, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934375501, "dur":1464, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.SecurityCore.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934377028, "dur":41154, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.Codeless.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934418188, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934418197, "dur":1251, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.Codeless.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934419508, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934419570, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934419577, "dur":67364, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934487027, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934487093, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934487099, "dur":25989, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934513146, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934513209, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934513215, "dur":29841, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934543145, "dur":79, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934543227, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934543236, "dur":37028, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934580334, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934580404, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934580411, "dur":50889, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934631369, "dur":69224, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934700599, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934700608, "dur":1511, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934702193, "dur":5470, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Analytics.DataPrivacy.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934707669, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934707678, "dur":1662, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Analytics.DataPrivacy.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934709414, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934709491, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934709499, "dur":116818, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934826388, "dur":92, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934826483, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934826493, "dur":102015, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934928577, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499934928648, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499934928656, "dur":243015, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":3, "ts":1674499935171761, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/resources.assets" }}
+,{ "pid":12345, "tid":3, "ts":1674499935171839, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499935171847, "dur":1885, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/resources.assets" }}
+,{ "pid":12345, "tid":3, "ts":1674499935173799, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":3, "ts":1674499935173877, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1674499935173883, "dur":1531, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":3, "ts":1674499935175485, "dur":234755, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499933960656, "dur":595, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499933961252, "dur":4828, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499933966088, "dur":185, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":4, "ts":1674499933966276, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499933977256, "dur":2145, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":4, "ts":1674499933979452, "dur":84, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499933979539, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499933979544, "dur":225704, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934205293, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934205357, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934205364, "dur":163215, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934368790, "dur":5411, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934374207, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934374215, "dur":1890, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934376170, "dur":76138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934452313, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934452322, "dur":1452, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934453836, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934453895, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934453902, "dur":33322, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934487294, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934487351, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934487357, "dur":25984, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934513399, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934513456, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934513461, "dur":146741, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934660269, "dur":1655, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934661929, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934661939, "dur":5754, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934667759, "dur":1248, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934669012, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934669052, "dur":1919, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934671049, "dur":1014, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934672068, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934672078, "dur":2823, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934674974, "dur":3226, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934678206, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934678215, "dur":1720, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934680002, "dur":38879, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934718887, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934718897, "dur":1492, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934720461, "dur":72, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934720537, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934720545, "dur":86891, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934807498, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934807564, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934807572, "dur":106255, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934913898, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499934913970, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499934913978, "dur":251442, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":4, "ts":1674499935165490, "dur":71, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":4, "ts":1674499935165565, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499935165571, "dur":3212, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":4, "ts":1674499935168850, "dur":200, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":4, "ts":1674499935169054, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499935169062, "dur":1403, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":4, "ts":1674499935170536, "dur":74, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":4, "ts":1674499935170614, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499935170622, "dur":2481, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":4, "ts":1674499935173172, "dur":103, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":4, "ts":1674499935173278, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1674499935173285, "dur":1736, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":4, "ts":1674499935175090, "dur":235109, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933960984, "dur":286, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933961270, "dur":4808, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933966089, "dur":143, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":5, "ts":1674499933966235, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933968466, "dur":1266, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":5, "ts":1674499933969785, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1674499933969840, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933970335, "dur":1414, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":5, "ts":1674499933971793, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":5, "ts":1674499933971834, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933971914, "dur":1367, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":5, "ts":1674499933973323, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":5, "ts":1674499933973412, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933974029, "dur":1234, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":5, "ts":1674499933975404, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":5, "ts":1674499933975452, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933975462, "dur":6304, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":5, "ts":1674499933981816, "dur":82, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":5, "ts":1674499933981902, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499933982353, "dur":94978, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":5, "ts":1674499934077382, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934077451, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934077459, "dur":46781, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934124307, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934124376, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934124383, "dur":49708, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934174151, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934174214, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934174221, "dur":89778, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934264060, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934264119, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934264128, "dur":141162, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934405346, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934405402, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934405408, "dur":23994, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934429764, "dur":76, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934429844, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934429852, "dur":25968, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934455877, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934455937, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934455945, "dur":40677, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934496681, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934496738, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934496771, "dur":49887, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934546728, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934546802, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934546810, "dur":50846, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934597764, "dur":76, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934597844, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934597882, "dur":36660, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934634610, "dur":52169, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934686785, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934686796, "dur":1472, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934688356, "dur":1005, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934689366, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934689375, "dur":1718, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934691154, "dur":133751, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Analytics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934824911, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934824931, "dur":1558, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Analytics.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934826555, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934826625, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934826632, "dur":43212, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934869932, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934870001, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934870036, "dur":46219, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934916318, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499934916385, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1674499934916393, "dur":277625, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":5, "ts":1674499935194066, "dur":216131, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933961170, "dur":16, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933961187, "dur":4889, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933966089, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":6, "ts":1674499933966093, "dur":130, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933966227, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/app.info" }}
+,{ "pid":12345, "tid":6, "ts":1674499933966231, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933967212, "dur":2891, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/app.info" }}
+,{ "pid":12345, "tid":6, "ts":1674499933970104, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":6, "ts":1674499933970150, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933970382, "dur":1403, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":6, "ts":1674499933971824, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":6, "ts":1674499933971865, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933971947, "dur":1464, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":6, "ts":1674499933973451, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":6, "ts":1674499933973507, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933973772, "dur":1430, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":6, "ts":1674499933975242, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":6, "ts":1674499933975276, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933975359, "dur":1739, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":6, "ts":1674499933977140, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":6, "ts":1674499933977175, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933977181, "dur":1616, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":6, "ts":1674499933978834, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499933978872, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933979894, "dur":2065, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499933981998, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499933982068, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499933982499, "dur":92356, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934074938, "dur":73, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934075014, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934075020, "dur":72390, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934147472, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934147543, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934147551, "dur":45008, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934192619, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934192677, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934192684, "dur":71969, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934264709, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934264770, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934264868, "dur":64049, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934328971, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934329027, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934329034, "dur":36406, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934365507, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934365579, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934365587, "dur":39330, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934404984, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934405048, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934405056, "dur":81036, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934486151, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934486211, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934486218, "dur":131214, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934617505, "dur":323147, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934940658, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934940667, "dur":1787, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934942522, "dur":63, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499934942589, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499934942598, "dur":59983, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499935002647, "dur":44039, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Purchasing.Common.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499935046691, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499935046701, "dur":1634, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Purchasing.Common.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499935048405, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499935048476, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499935048484, "dur":58343, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499935106892, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499935106957, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1674499935106965, "dur":303163, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":6, "ts":1674499935410172, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":6, "ts":1674499935410174, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499933961253, "dur":0, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499933961253, "dur":4826, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499933966089, "dur":194, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":7, "ts":1674499933966285, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934073320, "dur":2298, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":7, "ts":1674499934075669, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934075741, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934075747, "dur":51979, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934127784, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934127844, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934127850, "dur":45558, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934173470, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934173541, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934173548, "dur":51028, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934224649, "dur":183812, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934408466, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934408474, "dur":1872, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934410408, "dur":55, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934410467, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934410475, "dur":76856, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934487404, "dur":96, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934487503, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934487509, "dur":25525, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934513092, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934513154, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934513161, "dur":35297, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934548530, "dur":65, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934548599, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934548613, "dur":36952, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934585633, "dur":79894, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Advertisements.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934665533, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934665544, "dur":1559, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Advertisements.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934667177, "dur":67543, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934734725, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934734735, "dur":1415, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934736216, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934736286, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934736293, "dur":228823, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934965181, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499934965247, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499934965254, "dur":151740, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499935117061, "dur":69, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499935117134, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1674499935117142, "dur":207214, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":7, "ts":1674499935324433, "dur":85789, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499933961333, "dur":1, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499933961334, "dur":4746, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499933966089, "dur":168, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":8, "ts":1674499933966259, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499933975583, "dur":1522, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":8, "ts":1674499933977154, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":8, "ts":1674499933977220, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499933977250, "dur":2566, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":8, "ts":1674499933979854, "dur":825, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch.exe" }}
+,{ "pid":12345, "tid":8, "ts":1674499933980683, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499933980690, "dur":2153, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch.exe" }}
+,{ "pid":12345, "tid":8, "ts":1674499933982905, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499933982966, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499933983024, "dur":91021, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934074267, "dur":86, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934074360, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934074370, "dur":47839, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934122270, "dur":61, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934122335, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934122344, "dur":51922, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934174370, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934174455, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934174461, "dur":80847, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934255372, "dur":59, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934255434, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934255442, "dur":25873, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934281384, "dur":53, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934281440, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934281447, "dur":57768, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934339279, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934339339, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934339349, "dur":28883, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934368308, "dur":948, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.WinRTStub.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934369261, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934369269, "dur":1909, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.WinRTStub.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934371240, "dur":96803, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.Stores.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934468048, "dur":3, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934468058, "dur":20326, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.Purchasing.Stores.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934488445, "dur":468, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934488917, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934488923, "dur":91335, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934580328, "dur":68, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934580399, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934580408, "dur":180630, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934761102, "dur":60, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934761165, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934761174, "dur":202709, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934963951, "dur":66, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499934964020, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499934964029, "dur":176466, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499935140560, "dur":133947, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499935274511, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1674499935274518, "dur":1424, "ph":"X", "name": "CopyFiles",  "args": { "detail":"Builds/AdaptTouch_v17_TestType/AdaptTouch_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":8, "ts":1674499935276007, "dur":134241, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1674499935415803, "dur":2358, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1674499935435241, "dur": 834, "ph": "X", "name": "backend_profiler1.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1674499935434699, "dur": 1401, "ph": "X", "name": "Write chrome-trace events", "args": {} },

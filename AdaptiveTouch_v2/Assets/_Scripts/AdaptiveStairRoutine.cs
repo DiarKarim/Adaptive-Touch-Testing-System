@@ -161,6 +161,8 @@ public class StairCaseClass
 public class AdaptiveStairRoutine : MonoBehaviour
 {
     #region Variables
+    public TMP_Dropdown testTypeDropMenu; 
+
     public StairCaseClass stimUpdater_30 = new StairCaseClass();
     public StairCaseClass stimUpdater_30_stair_1 = new StairCaseClass();
     public StairCaseClass stimUpdater_30_stair_2 = new StairCaseClass();
@@ -170,7 +172,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
     private bool endReversals;
 
-    public string participantID = "";
+    private string participantID = "";
     public TMP_InputField studyInfo;
     public TMP_InputField pathField;
 
@@ -190,11 +192,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
         FreqDiscr_Low,
         FreqDiscr_High
     }
-    public myExpTypeEnum experimentType = myExpTypeEnum.FrequencyDiscrimination;
-    public myTrialTypeEnum trialType = myTrialTypeEnum.FreqDiscr_Together;
+    private myExpTypeEnum experimentType = myExpTypeEnum.FrequencyDiscrimination;
+    private myTrialTypeEnum trialType = myTrialTypeEnum.FreqDiscr_Together;
 
     //private StairCase stair_30Hz;
-    private int[] StimSequence;
+    /*private*/ int[] StimSequence;
     private int[] FreqOrder;
 
     public SyntactsHub syntacts;
@@ -517,6 +519,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         for (int i = 0; i < numbTrials; i++)
         {
+            participantID = studyInfo.text;
+
             ProgressSlider.value = i; // Update progress bar on slider 
 
             // 1. Set standard frequency based on frequency order i.e. either 30 or 300 
@@ -633,11 +637,31 @@ public class AdaptiveStairRoutine : MonoBehaviour
             // Record data 
             expTrialData.user_response.Add(answer);
             expTrialData.correct.Add(checkedAnswer);
-            expTrialData.standard_stim.Add(StimSequence[i]);
-            expTrialData.comparison_stim.Add(comparisonFrequency);
-            expTrialData.standard_freq.Add(standardFrequency);
-            expTrialData.comp_freq.Add(comparisonFrequency);
-            expTrialData.trialNumber.Add(i);
+
+            try
+            {
+                //expTrialData.standard_stim.Add(StimSequence[i]);
+                //expTrialData.comparison_stim.Add(comparisonFrequency);
+                //expTrialData.standard_freq.Add(standardFrequency);
+                //expTrialData.comp_freq.Add(comparisonFrequency);
+                //expTrialData.trialNumber.Add(i);
+
+                expTrialData.standard_stim.Add(StimSequence[i]);
+                expTrialData.comparison_stim.Add(comparisonFrequency);
+                expTrialData.standard_freq.Add(standardFrequency);
+                expTrialData.comp_freq.Add(comparisonFrequency);
+                expTrialData.trialNumber.Add(i);
+            }
+            catch
+            {
+                expTrialData.standard_stim.Add(StimSequence[0]);
+                expTrialData.comparison_stim.Add(comparisonFrequency);
+                expTrialData.standard_freq.Add(standardFrequency);
+                expTrialData.comp_freq.Add(comparisonFrequency);
+                expTrialData.trialNumber.Add(0);
+                Debug.Log("Error!");
+            }
+
 
             yield return new WaitForSeconds(0.01f);
             instructionDisplay.text = "Press S to continue";
@@ -963,6 +987,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         for (int i = 0; i < numbTrials; i++)
         {
+            participantID = studyInfo.text;
+
             ProgressSlider.value = i; // Update progress bar on slider 
 
             // 1. Set standard frequency based on frequency order i.e. either 30 or 300 
@@ -979,7 +1005,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Comparison
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
-                float amp = MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                float amp = 2f; //MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
                 Signal sig_1 = new Sine(50);
                 sig_1 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
                 syntacts.session.Play(soundChannel, sig_1);
@@ -988,7 +1014,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Standard
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
-                amp = MapFreq2Amp(standardFrequency);// 3.5f; // Random.Range(0.05f, 0.95f);
+                amp = 2f; //MapFreq2Amp(standardFrequency);// 3.5f; // Random.Range(0.05f, 0.95f);
                 Signal sig_2 = new Sine(50);
                 sig_2 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
                 syntacts.session.Play(soundChannel, sig_2);
@@ -999,7 +1025,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Standard
                 instructionDisplay.text = "1st stimulus";
                 yield return new WaitForSeconds(0.1f);
-                float amp = MapFreq2Amp(standardFrequency); // Random.Range(0.05f, 0.95f);
+                float amp = 2f; //MapFreq2Amp(standardFrequency); // Random.Range(0.05f, 0.95f);
                 Signal sig_3 = new Sine(50);
                 sig_3 = new Sine(standardFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
                 syntacts.session.Play(soundChannel, sig_3);
@@ -1008,7 +1034,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 // Comparison
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
-                amp = MapFreq2Amp(comparisonFrequency); // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
+                amp = 2f; //MapFreq2Amp(comparisonFrequency); // MapFreq2Amp(comparisonFrequency); // Random.Range(0.05f, 0.95f);
                 //float ampRand2 = Random.Range(amp - (amp * 0.1f), amp + (amp * 0.1f));
                 Signal sig_4 = new Sine(50);
                 sig_4 = new Sine(comparisonFrequency) * new ASR(0.05, 0.075, 0.05) * amp;
@@ -1079,11 +1105,23 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 expTrialData.correct.Add(stimUpdater_30_stair_2.checkedAnswer);
                 expTrialData.first_second_staircase.Add(1);
             }
-            expTrialData.standard_stim.Add(StimSequence[i]);
-            expTrialData.comparison_stim.Add(comparisonFrequency);
-            expTrialData.standard_freq.Add(standardFrequency);
-            expTrialData.comp_freq.Add(comparisonFrequency);
-            expTrialData.trialNumber.Add(i);
+            try
+            {
+                expTrialData.standard_stim.Add(StimSequence[i]);
+                expTrialData.comparison_stim.Add(comparisonFrequency);
+                expTrialData.standard_freq.Add(standardFrequency);
+                expTrialData.comp_freq.Add(comparisonFrequency);
+                expTrialData.trialNumber.Add(i);
+            }
+            catch
+            {
+                expTrialData.standard_stim.Add(StimSequence[0]);
+                expTrialData.comparison_stim.Add(comparisonFrequency);
+                expTrialData.standard_freq.Add(standardFrequency);
+                expTrialData.comp_freq.Add(comparisonFrequency);
+                expTrialData.trialNumber.Add(0);
+                Debug.Log("Error!");
+            }
 
             yield return new WaitForSeconds(0.01f);
             instructionDisplay.text = "Press S to continue";
@@ -1128,6 +1166,8 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
         for (int i = 0; i < numbTrials; i++)
         {
+            participantID = studyInfo.text;
+
             ProgressSlider.value = i; // Update progress bar on slider 
 
             // 1. Set standard frequency based on frequency order i.e. either 30 or 300 
@@ -1245,11 +1285,23 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 expTrialData.correct.Add(stimUpdater_300_stair_2.checkedAnswer);
                 expTrialData.first_second_staircase.Add(1);
             }
-            expTrialData.standard_stim.Add(StimSequence[i]);
-            expTrialData.comparison_stim.Add(comparisonFrequency);
-            expTrialData.standard_freq.Add(standardFrequency);
-            expTrialData.comp_freq.Add(comparisonFrequency);
-            expTrialData.trialNumber.Add(i);
+            try
+            {
+                expTrialData.standard_stim.Add(StimSequence[i]);
+                expTrialData.comparison_stim.Add(comparisonFrequency);
+                expTrialData.standard_freq.Add(standardFrequency);
+                expTrialData.comp_freq.Add(comparisonFrequency);
+                expTrialData.trialNumber.Add(i);
+            }
+            catch
+            {
+                expTrialData.standard_stim.Add(StimSequence[0]);
+                expTrialData.comparison_stim.Add(comparisonFrequency);
+                expTrialData.standard_freq.Add(standardFrequency);
+                expTrialData.comp_freq.Add(comparisonFrequency);
+                expTrialData.trialNumber.Add(0);
+                Debug.Log("Error!");
+            }
 
             yield return new WaitForSeconds(0.01f);
             instructionDisplay.text = "Press S to continue";
@@ -1298,7 +1350,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S) | confirm)
             {
-                confirm = false; 
+                confirm = false;
                 break;
             }
             yield return null;
@@ -1330,7 +1382,6 @@ public class AdaptiveStairRoutine : MonoBehaviour
             yield return null;
         }
 
-
         // Set variables for the various classes 
         stimUpdater_30.reversals = reversals;
         stimUpdater_300.reversals = reversals;
@@ -1346,17 +1397,30 @@ public class AdaptiveStairRoutine : MonoBehaviour
         stimUpdater_300_stair_1.stepSizeFreq = stepSizeFreq_300;
         stimUpdater_300_stair_2.stepSizeFreq = stepSizeFreq_300;
 
+        Debug.Log("Label: " + testTypeDropMenu.options[testTypeDropMenu.value].text);
+
+        participantID = studyInfo.text;
+
         // Start experiment coroutine 
         if (ExpRoutine != null)
             StopCoroutine(ExpRoutine);
-        if (trialType == myTrialTypeEnum.AmplitudeDiscr)
+        if (testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("Amplitude"))
             ExpRoutine = StartCoroutine(ExperimentSequenceAmp());
-        if (trialType == myTrialTypeEnum.FreqDiscr_Together)
+        if (testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("All"))
             ExpRoutine = StartCoroutine(ExperimentSequenceFreq2());
-        if (trialType == myTrialTypeEnum.FreqDiscr_High)
+        if (testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("High"))
             ExpRoutine = StartCoroutine(ExperimentSequenceFreq_High());
-        if (trialType == myTrialTypeEnum.FreqDiscr_Low)
+        if (testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("Low"))
             ExpRoutine = StartCoroutine(ExperimentSequenceFreq_Low());
+
+        //if (trialType == myTrialTypeEnum.AmplitudeDiscr | testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("Amplitude"))
+        //    ExpRoutine = StartCoroutine(ExperimentSequenceAmp());
+        //if (trialType == myTrialTypeEnum.FreqDiscr_Together | testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("All"))
+        //    ExpRoutine = StartCoroutine(ExperimentSequenceFreq2());
+        //if (trialType == myTrialTypeEnum.FreqDiscr_High | testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("High"))
+        //    ExpRoutine = StartCoroutine(ExperimentSequenceFreq_High());
+        //if (trialType == myTrialTypeEnum.FreqDiscr_Low | testTypeDropMenu.options[testTypeDropMenu.value].text.Contains("Low"))
+        //    ExpRoutine = StartCoroutine(ExperimentSequenceFreq_Low());
 
         yield return null;
     }
