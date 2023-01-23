@@ -1127,6 +1127,10 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 PlayAudio(audioSources[0], "Stim_1a");
                 yield return new WaitForSeconds(1f);
 
+                //Signal collision1 = new Sine(50);
+                //collision1 = new Sine(comparisonFrequency300) * new ASR(0.05, 0.075, 0.05) * amplitude;
+                //syntacts.session.Play(collisionChannel, collision1);
+
                 // Standard
                 instructionDisplay.text = "2nd  stimulus";
                 yield return new WaitForSeconds(0.1f);
@@ -1462,6 +1466,7 @@ public class AdaptiveStairRoutine : MonoBehaviour
         collision1 = new Sine(comparisonFrequency300) * new ASR(0.05, 0.075, 0.05) * amplitude;
         syntacts.session.Play(collisionChannel, collision1);
         yield return new WaitForSeconds(0.5f);
+
 
         // Standard
         instructionDisplay.text = "2nd stimulus";
