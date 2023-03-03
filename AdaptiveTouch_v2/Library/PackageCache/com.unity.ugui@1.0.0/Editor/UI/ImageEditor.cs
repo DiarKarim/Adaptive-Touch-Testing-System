@@ -117,8 +117,6 @@ namespace UnityEditor.UI
 
         protected override void OnDisable()
         {
-            base.OnDisable();
-
             m_ShowType.valueChanged.RemoveListener(Repaint);
             m_ShowSlicedOrTiled.valueChanged.RemoveListener(Repaint);
             m_ShowSliced.valueChanged.RemoveListener(Repaint);
@@ -234,7 +232,7 @@ namespace UnityEditor.UI
 
                 if (EditorGUILayout.BeginFadeGroup(m_ShowTiled.faded))
                 {
-                    if (image.sprite != null && !image.hasBorder && (image.sprite.texture != null && image.sprite.texture.wrapMode != TextureWrapMode.Repeat || image.sprite.packed))
+                    if (image.sprite != null && !image.hasBorder && (image.sprite.texture.wrapMode != TextureWrapMode.Repeat || image.sprite.packed))
                         EditorGUILayout.HelpBox("It looks like you want to tile a sprite with no border. It would be more efficient to modify the Sprite properties, clear the Packing tag and set the Wrap mode to Repeat.", MessageType.Warning);
                 }
                 EditorGUILayout.EndFadeGroup();

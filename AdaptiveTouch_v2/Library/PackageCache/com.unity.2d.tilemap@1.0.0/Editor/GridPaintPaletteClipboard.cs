@@ -418,12 +418,12 @@ namespace UnityEditor.Tilemaps
 
         private void UndoRedoPerformed()
         {
-            if (!unlocked)
-                return;
-
-            m_PaletteNeedsSave = true;
-            RefreshAllTiles();
-            Repaint();
+            if (unlocked)
+            {
+                m_PaletteNeedsSave = true;
+                RefreshAllTiles();
+                Repaint();
+            }
         }
 
         private void HandlePanAndZoom()
@@ -600,13 +600,7 @@ namespace UnityEditor.Tilemaps
                     RenderGrid();
                 previewUtility.Render();
                 if (m_Owner.drawGizmos)
-                {
-                    // Set CameraType to SceneView to force Gizmos to be drawn
-                    var storedType = previewUtility.camera.cameraType;
-                    previewUtility.camera.cameraType = CameraType.SceneView;
                     Handles.Internal_DoDrawGizmos(previewUtility.camera);
-                    previewUtility.camera.cameraType = storedType;
-                }
             }
 
             RenderDragAndDropPreview();
@@ -900,18 +894,6 @@ namespace UnityEditor.Tilemaps
             }
         }
 
-        protected override bool CustomTool(bool isHotControl, TilemapEditorTool tool, Vector3Int position)
-        {
-            var executed = false;
-            if (grid)
-            {
-                executed = tool.HandleTool(isHotControl, grid, brushTarget, position);
-                if (executed)
-                    OnPaletteChanged();
-            }
-            return executed;
-        }
-
         public override void Repaint()
         {
             m_Owner.Repaint();
@@ -921,8 +903,6 @@ namespace UnityEditor.Tilemaps
         {
             GridSelection.Clear();
         }
-
-        public override bool isActive => grid != null;
 
         protected override void OnBrushPickStarted()
         {

@@ -243,16 +243,12 @@ namespace UnityEditor.Tilemaps
         // Turn texture pixel position into integer grid position based on cell size, offset size and padding
         private static void GetGridPosition(Sprite sprite, Vector2Int cellPixelSize, Vector2Int offsetSize, Vector2Int paddingSize, out Vector2Int cellPosition, out Vector3 positionOffset)
         {
-            var spritePosition = sprite.rect.position;
-            var spriteCenter = sprite.rect.center;
             var position = new Vector2(
-                ((spriteCenter.x - offsetSize.x) / (cellPixelSize.x + paddingSize.x)),
-                (-(sprite.texture.height - spriteCenter.y - offsetSize.y) / (cellPixelSize.y + paddingSize.y)) + 1
+                ((sprite.rect.center.x - offsetSize.x) / (cellPixelSize.x + paddingSize.x)),
+                (-(sprite.texture.height - sprite.rect.center.y - offsetSize.y) / (cellPixelSize.y + paddingSize.y)) + 1
             );
             cellPosition = new Vector2Int(Mathf.FloorToInt(position.x), Mathf.FloorToInt(position.y));
-            positionOffset = (spriteCenter - spritePosition) / cellPixelSize;
-            positionOffset.x = (float)(positionOffset.x - Math.Truncate(positionOffset.x));
-            positionOffset.y = (float)(positionOffset.y - Math.Truncate(positionOffset.y));
+            positionOffset = position - cellPosition;
         }
 
         // Turn texture pixel position into integer isometric grid position based on cell size and offset size

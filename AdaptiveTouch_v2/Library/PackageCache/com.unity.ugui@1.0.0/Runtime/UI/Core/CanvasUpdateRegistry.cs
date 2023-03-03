@@ -167,12 +167,13 @@ namespace UnityEngine.UI
             m_PerformingLayoutUpdate = true;
 
             m_LayoutRebuildQueue.Sort(s_SortLayoutFunction);
+            var layoutRebuildQueueCount = m_LayoutRebuildQueue.Count;
 
             for (int i = 0; i <= (int)CanvasUpdate.PostLayout; i++)
             {
                 UnityEngine.Profiling.Profiler.BeginSample(m_CanvasUpdateProfilerStrings[i]);
 
-                for (int j = 0; j < m_LayoutRebuildQueue.Count; j++)
+                for (int j = 0; j < layoutRebuildQueueCount; j++)
                 {
                     var rebuild = m_LayoutRebuildQueue[j];
                     try
@@ -188,7 +189,7 @@ namespace UnityEngine.UI
                 UnityEngine.Profiling.Profiler.EndSample();
             }
 
-            for (int i = 0; i < m_LayoutRebuildQueue.Count; ++i)
+            for (int i = 0; i < layoutRebuildQueueCount; ++i)
                 m_LayoutRebuildQueue[i].LayoutComplete();
 
             m_LayoutRebuildQueue.Clear();
@@ -203,10 +204,11 @@ namespace UnityEngine.UI
 
             m_PerformingGraphicUpdate = true;
 
+            var graphicRebuildQueueCount = m_GraphicRebuildQueue.Count;
             for (var i = (int)CanvasUpdate.PreRender; i < (int)CanvasUpdate.MaxUpdateValue; i++)
             {
                 UnityEngine.Profiling.Profiler.BeginSample(m_CanvasUpdateProfilerStrings[i]);
-                for (var k = 0; k < m_GraphicRebuildQueue.Count; k++)
+                for (var k = 0; k < graphicRebuildQueueCount; k++)
                 {
                     try
                     {
@@ -222,7 +224,7 @@ namespace UnityEngine.UI
                 UnityEngine.Profiling.Profiler.EndSample();
             }
 
-            for (int i = 0; i < m_GraphicRebuildQueue.Count; ++i)
+            for (int i = 0; i < graphicRebuildQueueCount; ++i)
                 m_GraphicRebuildQueue[i].GraphicUpdateComplete();
 
             m_GraphicRebuildQueue.Clear();
@@ -335,16 +337,6 @@ namespace UnityEngine.UI
             instance.InternalUnRegisterCanvasElementForGraphicRebuild(element);
         }
 
-        /// <summary>
-        /// Disable the given element from both the graphic and the layout rebuild lists.
-        /// </summary>
-        /// <param name="element"></param>
-        public static void DisableCanvasElementForRebuild(ICanvasElement element)
-        {
-            instance.InternalDisableCanvasElementForLayoutRebuild(element);
-            instance.InternalDisableCanvasElementForGraphicRebuild(element);
-        }
-
         private void InternalUnRegisterCanvasElementForLayoutRebuild(ICanvasElement element)
         {
             if (m_PerformingLayoutUpdate)
@@ -366,29 +358,6 @@ namespace UnityEngine.UI
             }
             element.GraphicUpdateComplete();
             instance.m_GraphicRebuildQueue.Remove(element);
-        }
-
-        private void InternalDisableCanvasElementForLayoutRebuild(ICanvasElement element)
-        {
-            if (m_PerformingLayoutUpdate)
-            {
-                Debug.LogError(string.Format("Trying to remove {0} from rebuild list while we are already inside a rebuild loop. This is not supported.", element));
-                return;
-            }
-
-            element.LayoutComplete();
-            instance.m_LayoutRebuildQueue.DisableItem(element);
-        }
-
-        private void InternalDisableCanvasElementForGraphicRebuild(ICanvasElement element)
-        {
-            if (m_PerformingGraphicUpdate)
-            {
-                Debug.LogError(string.Format("Trying to remove {0} from rebuild list while we are already inside a rebuild loop. This is not supported.", element));
-                return;
-            }
-            element.GraphicUpdateComplete();
-            instance.m_GraphicRebuildQueue.DisableItem(element);
         }
 
         /// <summary>

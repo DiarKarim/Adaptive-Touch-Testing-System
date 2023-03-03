@@ -185,10 +185,6 @@ namespace InputfieldTests
         [UnityTest]
         public IEnumerator FocusOpensTouchScreenKeyboard()
         {
-            var isInPlaceEditingDisabled = typeof(TouchScreenKeyboard).GetProperty("disableInPlaceEditing",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            isInPlaceEditingDisabled.SetValue(null, true);
-
             if (!TouchScreenKeyboard.isSupported)
                 yield break;
             InputField inputField = m_PrefabRoot.GetComponentInChildren<InputField>();
