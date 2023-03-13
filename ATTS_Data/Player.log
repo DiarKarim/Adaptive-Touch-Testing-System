@@ -1,0 +1,47 @@
+Mono path[0] = 'C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/AdaptTouch_v2_Windows/AdaptTouch_Data/Managed'
+Mono config path = 'C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/AdaptTouch_v2_Windows/MonoBleedingEdge/etc'
+PlayerConnection initialized from C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/AdaptTouch_v2_Windows/AdaptTouch_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55043
+Multi-casting "[IP] 172.22.77.183 [Port] 55043 [Flags] 2 [Guid] 2965037038 [EditorId] 2877107474 [Version] 1048832 [Id] WindowsPlayer(LAPTOP-7SDCRQHH) [Debug] 0 [PackageName] WindowsPlayer [ProjectName] AdaptTouch" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55043]
+PlayerConnection already initialized - listening to [0.0.0.0:55043]
+Initialize engine version: 2020.1.9f1 (145f5172610f)
+[Subsystems] Discovering subsystems at path C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Builds/AdaptTouch_v2_Windows/AdaptTouch_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1060 (ID=0x1c20)
+    Vendor:   
+    VRAM:     6052 MB
+    Driver:   24.21.13.9931
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.672 seconds
+D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.802800 ms
+<b>[Syntacts]</b> Opened Device 4: Speakers (Realtek High Definition Audio)
+UnityEngine.DebugLogHandler:Internal_Log(LogType, LogOption, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+SyntactsHub:Awake() (at C:\Users\ObiPC\OneDrive\Projects\Adaptive-Touch-Testing-System\AdaptiveTouch_v2\Assets\Syntacts\SyntactsHub.cs:72)
+ 
+(Filename: C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Assets/Syntacts/SyntactsHub.cs Line: 72)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 1a54 -> priority: 1 
+  Thread -> id: 2098 -> priority: 1 
+  Thread -> id: df8 -> priority: 1 
+  Thread -> id: c50 -> priority: 1 
+<b>[Syntacts]</b> Closed Device
+UnityEngine.DebugLogHandler:Internal_Log(LogType, LogOption, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+SyntactsHub:OnApplicationQuit() (at C:\Users\ObiPC\OneDrive\Projects\Adaptive-Touch-Testing-System\AdaptiveTouch_v2\Assets\Syntacts\SyntactsHub.cs:82)
+ 
+(Filename: C:/Users/ObiPC/OneDrive/Projects/Adaptive-Touch-Testing-System/AdaptiveTouch_v2/Assets/Syntacts/SyntactsHub.cs Line: 82)
+
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1665424441248,"processId":12864,"allocatedMemory":228955,"memoryLabels":[{"Permanent":40},{"NewDelete":216},{"Thread":144},{"Manager":1520},{"GfxDevice":224424},{"Physics":32},{"Serialization":40},{"String":315},{"PoolAlloc":56},{"Sprites":8},{"GI":296},{"VR":1344},{"Subsystems":96},{"VirtualTexturing":424}]}

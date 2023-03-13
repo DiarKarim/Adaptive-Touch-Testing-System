@@ -1,0 +1,66 @@
+{
+  "user_response": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+  ],
+  "trialNumber": [
+    0,
+    1,
+    1,
+    2,
+    3,
+    4
+  ],
+  "first_second_staircase": [
+    1,
+    0,
+    1,
+    1,
+    0,
+    0
+  ],
+  "standard_stim": [
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "comparison_stim": [
+    80.0,
+    80.0,
+    70.0,
+    70.0,
+    60.0,
+    60.0
+  ],
+  "standard_freq": [
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0,
+    30.0
+  ],
+  "comp_freq": [
+    80.0,
+    80.0,
+    70.0,
+    70.0,
+    60.0,
+    60.0
+  ],
+  "correct": [
+    "Correct",
+    "Correct",
+    "Correct",
+    "Correct",
+    "Correct",
+    "Correct"
+  ]
+}

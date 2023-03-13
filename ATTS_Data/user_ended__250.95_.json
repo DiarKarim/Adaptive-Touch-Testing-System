@@ -1,0 +1,34 @@
+{
+  "user_response": [
+    0,
+    0
+  ],
+  "trialNumber": [
+    0,
+    0
+  ],
+  "first_second_staircase": [
+    0,
+    0
+  ],
+  "standard_stim": [
+    1.0,
+    1.0
+  ],
+  "comparison_stim": [
+    400.0,
+    400.0
+  ],
+  "standard_freq": [
+    300.0,
+    300.0
+  ],
+  "comp_freq": [
+    400.0,
+    400.0
+  ],
+  "correct": [
+    "",
+    ""
+  ]
+}
