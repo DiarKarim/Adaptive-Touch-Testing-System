@@ -8,6 +8,7 @@ using UnityEngine.Tilemaps;
 using Event = UnityEngine.Event;
 using Object = UnityEngine.Object;
 
+using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 
 namespace UnityEditor.Tilemaps
@@ -21,8 +22,7 @@ namespace UnityEditor.Tilemaps
             Grid = 2
         }
         private static readonly string k_TilemapFocusModeEditorPref = "TilemapFocusMode";
-
-        internal static TilemapFocusMode focusMode
+        private TilemapFocusMode focusMode
         {
             get
             {
@@ -108,6 +108,8 @@ namespace UnityEditor.Tilemaps
             public static readonly GUIContent lockPaletteEditing = EditorGUIUtility.TrTextContent("Lock Palette Editing");
             public static readonly GUIContent openTilePalettePreferences = EditorGUIUtility.TrTextContent("Open Tile Palette Preferences");
             public static readonly GUIContent createNewPalette = EditorGUIUtility.TrTextContent("Create New Palette");
+            public static readonly GUIContent focusLabel = EditorGUIUtility.TrTextContent("Focus On");
+            public static readonly GUIContent rendererOverlayTitleLabel = EditorGUIUtility.TrTextContent("Tilemap");
             public static readonly GUIContent activeTargetLabel = EditorGUIUtility.TrTextContent("Active Tilemap", "Specifies the currently active Tilemap used for painting in the Scene View.");
             public static readonly GUIContent prefabWarningIcon = EditorGUIUtility.TrIconContent("console.warnicon.sml", "Editing Tilemaps in Prefabs will have better performance if edited in Prefab Mode.");
 
@@ -205,52 +207,57 @@ namespace UnityEditor.Tilemaps
 
         private PaintableSceneViewGrid m_PaintableSceneViewGrid;
 
-        readonly TilemapEditorTool.ShortcutContext m_ShortcutContext = new TilemapEditorTool.ShortcutContext { active = true };
+        class ShortcutContext : IShortcutToolContext
+        {
+            public bool active { get; set; }
+        }
+
+        readonly ShortcutContext m_ShortcutContext = new ShortcutContext { active = true };
 
         [FormerlyPrefKeyAs("Grid Painting/Select", "s")]
-        [Shortcut("Grid Painting/Select", typeof(TilemapEditorTool.ShortcutContext), KeyCode.S)]
+        [Shortcut("Grid Painting/Select", typeof(ShortcutContext), KeyCode.S)]
         static void GridSelectKey()
         {
             TilemapEditorTool.ToggleActiveEditorTool(typeof(SelectTool));
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Move", "m")]
-        [Shortcut("Grid Painting/Move", typeof(TilemapEditorTool.ShortcutContext), KeyCode.M)]
+        [Shortcut("Grid Painting/Move", typeof(ShortcutContext), KeyCode.M)]
         static void GridMoveKey()
         {
             TilemapEditorTool.ToggleActiveEditorTool(typeof(MoveTool));
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Brush", "b")]
-        [Shortcut("Grid Painting/Brush", typeof(TilemapEditorTool.ShortcutContext), KeyCode.B)]
+        [Shortcut("Grid Painting/Brush", typeof(ShortcutContext), KeyCode.B)]
         static void GridBrushKey()
         {
             TilemapEditorTool.ToggleActiveEditorTool(typeof(PaintTool));
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Rectangle", "u")]
-        [Shortcut("Grid Painting/Rectangle", typeof(TilemapEditorTool.ShortcutContext), KeyCode.U)]
+        [Shortcut("Grid Painting/Rectangle", typeof(ShortcutContext), KeyCode.U)]
         static void GridRectangleKey()
         {
             TilemapEditorTool.ToggleActiveEditorTool(typeof(BoxTool));
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Picker", "i")]
-        [Shortcut("Grid Painting/Picker", typeof(TilemapEditorTool.ShortcutContext), KeyCode.I)]
+        [Shortcut("Grid Painting/Picker", typeof(ShortcutContext), KeyCode.I)]
         static void GridPickerKey()
         {
             TilemapEditorTool.ToggleActiveEditorTool(typeof(PickingTool));
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Erase", "d")]
-        [Shortcut("Grid Painting/Erase", typeof(TilemapEditorTool.ShortcutContext), KeyCode.D)]
+        [Shortcut("Grid Painting/Erase", typeof(ShortcutContext), KeyCode.D)]
         static void GridEraseKey()
         {
             TilemapEditorTool.ToggleActiveEditorTool(typeof(EraseTool));
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Fill", "g")]
-        [Shortcut("Grid Painting/Fill", typeof(TilemapEditorTool.ShortcutContext), KeyCode.G)]
+        [Shortcut("Grid Painting/Fill", typeof(ShortcutContext), KeyCode.G)]
         static void GridFillKey()
         {
             TilemapEditorTool.ToggleActiveEditorTool(typeof(FillTool));
@@ -262,16 +269,16 @@ namespace UnityEditor.Tilemaps
             GridPaintingState.activeGrid.Repaint();
         }
 
-        [FormerlyPrefKeyAs("Grid Painting/Rotate Clockwise", "]")]
-        [Shortcut("Grid Painting/Rotate Clockwise", typeof(TilemapEditorTool.ShortcutContext), KeyCode.RightBracket)]
+        [FormerlyPrefKeyAs("Grid Painting/Rotate Clockwise", "[")]
+        [Shortcut("Grid Painting/Rotate Clockwise", typeof(ShortcutContext), KeyCode.LeftBracket)]
         static void RotateBrushClockwise()
         {
             if (GridPaintingState.gridBrush != null && GridPaintingState.activeGrid != null)
                 RotateBrush(GridBrushBase.RotationDirection.Clockwise);
         }
 
-        [FormerlyPrefKeyAs("Grid Painting/Rotate Anti-Clockwise", "[")]
-        [Shortcut("Grid Painting/Rotate Anti-Clockwise", typeof(TilemapEditorTool.ShortcutContext), KeyCode.LeftBracket)]
+        [FormerlyPrefKeyAs("Grid Painting/Rotate Anti-Clockwise", "]")]
+        [Shortcut("Grid Painting/Rotate Anti-Clockwise", typeof(ShortcutContext), KeyCode.RightBracket)]
         static void RotateBrushAntiClockwise()
         {
             if (GridPaintingState.gridBrush != null && GridPaintingState.activeGrid != null)
@@ -285,7 +292,7 @@ namespace UnityEditor.Tilemaps
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Flip X", "#[")]
-        [Shortcut("Grid Painting/Flip X", typeof(TilemapEditorTool.ShortcutContext), KeyCode.LeftBracket, ShortcutModifiers.Shift)]
+        [Shortcut("Grid Painting/Flip X", typeof(ShortcutContext), KeyCode.LeftBracket, ShortcutModifiers.Shift)]
         static void FlipBrushX()
         {
             if (GridPaintingState.gridBrush != null && GridPaintingState.activeGrid != null)
@@ -293,7 +300,7 @@ namespace UnityEditor.Tilemaps
         }
 
         [FormerlyPrefKeyAs("Grid Painting/Flip Y", "#]")]
-        [Shortcut("Grid Painting/Flip Y", typeof(TilemapEditorTool.ShortcutContext), KeyCode.RightBracket, ShortcutModifiers.Shift)]
+        [Shortcut("Grid Painting/Flip Y", typeof(ShortcutContext), KeyCode.RightBracket, ShortcutModifiers.Shift)]
         static void FlipBrushY()
         {
             if (GridPaintingState.gridBrush != null && GridPaintingState.activeGrid != null)
@@ -311,7 +318,7 @@ namespace UnityEditor.Tilemaps
             }
         }
 
-        [Shortcut("Grid Painting/Increase Z", typeof(TilemapEditorTool.ShortcutContext), KeyCode.Minus)]
+        [Shortcut("Grid Painting/Increase Z", typeof(ShortcutContext), KeyCode.Minus)]
         static void IncreaseBrushZ()
         {
             if (GridPaintingState.gridBrush != null
@@ -321,7 +328,7 @@ namespace UnityEditor.Tilemaps
                 ChangeBrushZ(1);
         }
 
-        [Shortcut("Grid Painting/Decrease Z", typeof(TilemapEditorTool.ShortcutContext), KeyCode.Equals)]
+        [Shortcut("Grid Painting/Decrease Z", typeof(ShortcutContext), KeyCode.Equals)]
         static void DecreaseBrushZ()
         {
             if (GridPaintingState.gridBrush != null
@@ -478,7 +485,6 @@ namespace UnityEditor.Tilemaps
             GUILayout.Space(leftMargin);
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
-            leftMargin = (Screen.width / EditorGUIUtility.pixelsPerPoint - (k_ActiveTargetLabelWidth + k_ActiveTargetDropdownWidth)) * 0.5f;
             GUILayout.Space(leftMargin);
             DoActiveTargetsGUI();
             GUILayout.Space(leftMargin);
@@ -537,10 +543,10 @@ namespace UnityEditor.Tilemaps
             EditorTool active = EditorToolManager.activeTool;
             EditorTool selected;
 
-            if (EditorGUILayout.EditorToolbar(GUIContent.none, active, TilemapEditorTool.tilemapEditorTools, out selected))
+            if (EditorGUILayout.EditorToolbar(active, TilemapEditorTool.tilemapEditorTools, out selected))
             {
                 if (active == selected)
-                    ToolManager.RestorePreviousPersistentTool();
+                    ToolManager.SetActiveTool(EditorToolManager.GetLastTool(x => !TilemapEditorTool.tilemapEditorTools.Contains(x)));
                 else
                     ToolManager.SetActiveTool(selected);
             }
@@ -555,18 +561,6 @@ namespace UnityEditor.Tilemaps
         {
             if (m_PreviewUtility == null)
                 InitPreviewUtility();
-
-            Stack<int> childPositions = null;
-            if (paletteInstance != null && GridSelection.active && GridSelection.target.transform.IsChildOf(paletteInstance.transform))
-            {
-                childPositions = new Stack<int>();
-                var transform = GridSelection.target.transform;
-                while (transform != null && transform != paletteInstance.transform)
-                {
-                    childPositions.Push(transform.GetSiblingIndex());
-                    transform = transform.parent;
-                }
-            }
 
             m_DelayedResetPaletteInstance = false;
             DestroyPreviewInstance();
@@ -617,18 +611,6 @@ namespace UnityEditor.Tilemaps
                 PreviewRenderUtility.SetEnabledRecursive(m_PaletteInstance, true);
 
                 clipboardView.ResetPreviewMesh();
-
-                if (childPositions != null)
-                {
-                    var transform = paletteInstance.transform;
-                    while (childPositions.Count > 0)
-                    {
-                        var siblingIndex = childPositions.Pop();
-                        if (siblingIndex < transform.childCount)
-                            transform = transform.GetChild(siblingIndex);
-                    }
-                    GridSelection.Select(transform.gameObject, GridSelection.position);
-                }
             }
         }
 
@@ -1329,7 +1311,9 @@ namespace UnityEditor.Tilemaps
 
         private void OnSceneViewGUI(SceneView sceneView)
         {
-            if ((GridPaintingState.defaultBrush == null || GridPaintingState.scenePaintTarget == null) && focusMode != TilemapFocusMode.None)
+            if (GridPaintingState.defaultBrush != null && GridPaintingState.scenePaintTarget != null)
+                SceneViewOverlay.Window(Styles.rendererOverlayTitleLabel, DisplayFocusMode, (int)SceneViewOverlay.Ordering.TilemapRenderer, SceneViewOverlay.WindowDisplayOption.OneWindowPerTitle);
+            else if (focusMode != TilemapFocusMode.None)
             {
                 // case 946284: Disable Focus if focus mode is set but there is nothing to focus on
                 DisableFocus();
@@ -1345,6 +1329,18 @@ namespace UnityEditor.Tilemaps
                 focusMode = tilemapFocusMode;
                 EnableFocus();
             }
+        }
+
+        private void DisplayFocusMode(Object displayTarget, SceneView sceneView)
+        {
+            var labelWidth = EditorGUIUtility.labelWidth;
+            var fieldWidth = EditorGUIUtility.fieldWidth;
+            EditorGUIUtility.labelWidth = EditorGUIUtility.fieldWidth =
+                0.5f * (EditorGUIUtility.labelWidth + EditorGUIUtility.fieldWidth);
+            var newFocus = (TilemapFocusMode)EditorGUILayout.EnumPopup(Styles.focusLabel, focusMode);
+            SetFocusMode(newFocus);
+            EditorGUIUtility.labelWidth = labelWidth;
+            EditorGUIUtility.fieldWidth = fieldWidth;
         }
 
         private void FilterSingleSceneObjectInScene(int instanceID)
@@ -1387,6 +1383,10 @@ namespace UnityEditor.Tilemaps
                     {
                         FilterSingleSceneObjectInScene(tilemap.layoutGrid.gameObject.GetInstanceID());
                     }
+                    break;
+                }
+                default:
+                {
                     break;
                 }
             }

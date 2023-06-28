@@ -1086,6 +1086,11 @@ public class AdaptiveStairRoutine : MonoBehaviour
                 comparisonFrequency = comFreq[0] + next_stimulus;
                 comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
 
+                if (comparisonFrequency < (standardFrequency * 0.9f))
+                    comparisonFrequency = (standardFrequency * 0.9f);
+
+                Debug.Log("A: Comp freq: " + comparisonFrequency.ToString() + "Stand freq: " + standardFrequency);
+
                 comFreq[0] = comparisonFrequency;
             }
             catch
@@ -1265,6 +1270,9 @@ public class AdaptiveStairRoutine : MonoBehaviour
 
                 comparisonFrequency = comFreq[1] + next_stimulus;
                 comparisonFrequency = Mathf.Sqrt(comparisonFrequency * comparisonFrequency);
+
+                if (comparisonFrequency < (standardFrequency * 0.9f))
+                    comparisonFrequency = (standardFrequency * 0.9f);
 
                 comFreq[1] = comparisonFrequency;
             }

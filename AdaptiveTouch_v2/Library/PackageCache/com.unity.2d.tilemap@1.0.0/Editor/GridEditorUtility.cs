@@ -32,7 +32,7 @@ namespace UnityEditor.Tilemaps
             if (Camera.current.orthographic)
             {
                 Vector2 screen = EditorGUIUtility.PointsToPixels(GUIClip.Unclip(screenPosition));
-                screen.y = Camera.current.pixelHeight - screen.y;
+                screen.y = Screen.height - screen.y;
                 Vector3 cameraWorldPoint = Camera.current.ScreenToWorldPoint(screen);
                 ray = new Ray(cameraWorldPoint, Camera.current.transform.forward);
             }
@@ -190,9 +190,6 @@ namespace UnityEditor.Tilemaps
 
         public static void DrawGridMarquee(GridLayout gridLayout, BoundsInt area, Color color)
         {
-            if (gridLayout == null)
-                return;
-
             switch (gridLayout.cellLayout)
             {
                 case GridLayout.CellLayout.Hexagon:
@@ -250,12 +247,12 @@ namespace UnityEditor.Tilemaps
             int right = horizontalCount;
             Vector3[] cellOffset =
             {
-                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, gridLayout.cellSize.y / 2, 0)),
-                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, 0)),
-                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, 0)),
-                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, -gridLayout.cellSize.y / 2, 0)),
-                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, 0)),
-                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, 0))
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, gridLayout.cellSize.y / 2, area.zMin)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, area.zMin)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, area.zMin)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(0, -gridLayout.cellSize.y / 2, area.zMin)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, -gridLayout.cellSize.y / 4, area.zMin)),
+                Grid.Swizzle(gridLayout.cellSwizzle, new Vector3(-gridLayout.cellSize.x / 2, gridLayout.cellSize.y / 4, area.zMin))
             };
             // Fill Top and Bottom Vertices
             for (int x = area.min.x; x < area.max.x; x++)
